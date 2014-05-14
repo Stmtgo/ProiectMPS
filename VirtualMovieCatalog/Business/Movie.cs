@@ -13,21 +13,21 @@ namespace VirtualMovieCatalog.Business
         List<string> actors;
         List<string> genres;
         List<string> subtitles;
-        List<int> disks;
+        List<string> discs;
         string description;
         int year;
         int nrDiscs;
 
 
         //Constructor(s)===========================================================================
-        public Movie(string name, List<string> genres, List<string> directors, List<string> actors, List<string> subtitles, List<int> disks,string description, int year)
+        public Movie(string name, List<string> genres, List<string> directors, List<string> actors, List<string> subtitles, List<int> discs,string description, int year)
         {
             this.name = name;
             this.genres = genres;
             this.directors = directors;
             this.actors = actors;
             this.subtitles = subtitles;
-            this.disks = disks;
+            this.discs = discs;
             this.description = description;
             this.year = year;
         }
@@ -65,8 +65,8 @@ namespace VirtualMovieCatalog.Business
 
         public List<int> Disks
         {
-            get { return disks; }
-            set { disks = value; }
+            get { return discs; }
+            set { discs = value; }
         }
 
         public string Descripsion
@@ -79,6 +79,12 @@ namespace VirtualMovieCatalog.Business
         {
             get { return year; }
             set { year = value; }
+        }
+
+        public int NrDiscs
+        {
+            get { return nrDiscs; }
+            set { nrDiscs = value; }
         }
 
         //Public Methods===========================================================================
