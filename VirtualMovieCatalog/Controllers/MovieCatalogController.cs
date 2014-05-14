@@ -18,7 +18,10 @@ namespace VirtualMovieCatalog.Controllers
         {
             movieCatalog = new MovieCatalog();
             dbConfig = new DatabaseConfig();
-            dataTransferManager = new DataTransferManager();
+            dataTransferManager = new DataTransferManager(dbConfig.GetUsername(),
+                                                          dbConfig.GetPassword(),
+                                                          dbConfig.GetServer(),
+                                                          dbConfig.GetDatabase());
 
         }
 
@@ -28,7 +31,7 @@ namespace VirtualMovieCatalog.Controllers
         //Private Methods==========================================================================
         private void SetMovieList()
         {
-            movieCatalog.SetMoviesList(dataTransferManager.GetMovies());
+           // movieCatalog.SetMoviesList(dataTransferManager.GetMovies());
         }
 
     }
