@@ -21,8 +21,9 @@ namespace VirtualMovieCatalog
             directors.Add( "Director2");
             directors.Add( "SomeGuy");
             directors.Add("SomeNewGuy");
+            directors.Add("SomeNewer_Guy");
 
-            var movie = new Movie("Matrix222", new List<String>(), directors, new List<String>(), new List<String>(), new List<int>(), "Some description", 1999);
+            var movie = new Movie("NewFilm", new List<String>(), directors, new List<String>(), new List<String>(), new List<String>(), "Some description", 1999);
 
 
             dataManager.insertMovie( movie);

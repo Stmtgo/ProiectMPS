@@ -20,7 +20,7 @@ namespace VirtualMovieCatalog.Business
 
 
         //Constructor(s)===========================================================================
-        public Movie(string name, List<string> genres, List<string> directors, List<string> actors, List<string> subtitles, List<int> discs,string description, int year)
+        public Movie(string name, List<string> genres, List<string> directors, List<string> actors, List<string> subtitles, List<String> discs,string description, int year)
         {
             this.name = name;
             this.genres = genres;
@@ -63,7 +63,7 @@ namespace VirtualMovieCatalog.Business
             set { subtitles = value; }
         }
 
-        public List<int> Disks
+        public List<String> Disks
         {
             get { return discs; }
             set { discs = value; }

@@ -28,7 +28,7 @@ namespace VirtualMovieCatalog.Business
             this.listOfMovies = listOfMovies;
         }
 
-        public void AddMovie(string name, List<string> genres, List<string> directors, List<string> actors, List<string> subtitles, List<int> disks, string description, int year)
+        public void AddMovie(string name, List<string> genres, List<string> directors, List<string> actors, List<string> subtitles, List<String> disks, string description, int year)
         {
             var createdMovie = CreateMovie(name, genres, directors, actors, subtitles, disks, description, year);
             //dataTransferManager.AddMovie(createdMovie);
@@ -51,7 +51,7 @@ namespace VirtualMovieCatalog.Business
         }
 
         //Private Methods==========================================================================
-        private Movie CreateMovie(string name, List<string> genres, List<string> directors, List<string> actors, List<string> subtitles, List<int> disks, string description, int year)
+        private Movie CreateMovie(string name, List<string> genres, List<string> directors, List<string> actors, List<string> subtitles, List<String> disks, string description, int year)
         {
             return new Movie(name, genres, directors, actors, subtitles, disks, description, year);
         }

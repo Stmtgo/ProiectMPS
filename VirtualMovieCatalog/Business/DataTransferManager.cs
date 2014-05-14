@@ -138,8 +138,11 @@ namespace VirtualMovieCatalog.Business
                     {
                         insert.Parameters["@entityId"].Value = entityId;
 
-                        // this one can fail on duplicate id TODO: fix it
-                        insert.ExecuteNonQuery();
+                        try
+                        {
+                            insert.ExecuteNonQuery();
+                        } catch (Exception e) 
+                        {}
                     }
                 }
             }
