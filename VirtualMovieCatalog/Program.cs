@@ -23,10 +23,12 @@ namespace VirtualMovieCatalog
             directors.Add("SomeNewGuy");
             directors.Add("SomeNewer_Guy");
 
-            var movie = new Movie("NewFilm", new List<String>(), directors, new List<String>(), new List<String>(), new List<String>(), "Some description", 1999);
+            var movie = new Movie("NewFilm3", new List<String>(), directors, new List<String>(), new List<String>(), new List<String>(), "Some description", 1999);
 
 
             dataManager.insertMovie( movie);
+
+            var mov = dataManager.getMovies();
 
 
             Form1 mainForm = new Form1();

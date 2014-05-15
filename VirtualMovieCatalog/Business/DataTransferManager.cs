@@ -14,12 +14,36 @@ namespace VirtualMovieCatalog.Business
 
         public DataTransferManager( String user, String password, String server, String database)
         {
-            connectionString = "user id=oregano;" +
-                                 "password=oregano;" +
-                                 "server=GPC\\SQLEXPRESS;" +
-                                 "Trusted_Connection=yes;" +
-                                 "database=movie_db; " +
-                                 "connection timeout=10";
+            connectionString = "Data Source=(LocalDb)\\v11.0;AttachDbFilename=|DataDirectory|\\movies.mdf;Initial Catalog=movies;Integrated Security=True";
+        }
+
+        public List<String> getMovies()
+        {
+            var ret = new List<String>();
+
+            String selectCommand = "SELECT * FROM movies";
+
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                string path;
+                path = System.IO.Path.GetDirectoryName(
+                   System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase);
+
+                con.Open();
+
+                using (SqlCommand select = new SqlCommand(selectCommand, con))
+                {
+
+                    var result = select.ExecuteReader();
+
+                    while (result.Read())
+                    {
+                        ret.Add(result["name"].ToString());
+                    }
+                }
+            }
+
+            return ret;
         }
 
         public bool insertMovie( Movie movie)

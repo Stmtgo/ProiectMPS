@@ -15,5 +15,13 @@ namespace VirtualMovieCatalog
         {
             InitializeComponent();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string path;
+            path = System.IO.Path.GetDirectoryName(
+               System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase);
+            MessageBox.Show(path);
+        }
     }
 }
