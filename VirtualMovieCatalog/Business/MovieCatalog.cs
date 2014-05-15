@@ -51,9 +51,10 @@ namespace VirtualMovieCatalog.Business
         }
 
         //Private Methods==========================================================================
-        private Movie CreateMovie(string name, List<string> genres, List<string> directors, List<string> actors, List<string> subtitles, List<String> disks, string description, int year)
+        private Movie CreateMovie(string name, List<string> genres, List<string> directors, List<string> actors, List<string> subtitles, List<String> discs, string description, int year)
         {
-            return new Movie(name, genres, directors, actors, subtitles, disks, description, year);
+            int nrDiscs = discs.Count();
+            return new Movie(name, genres, directors, actors, subtitles, discs, description, year, nrDiscs);
         }
     }
 }

@@ -15,7 +15,7 @@ namespace VirtualMovieCatalog
         [STAThread]
         static void Main()
         {
-            var dataManager = new DataTransferManager("asd", "asd", "asd", "asd");
+            var dataManager = new DataTransferManager();
 
             var directors = new List<String>();
             directors.Add( "Director2");
@@ -23,13 +23,13 @@ namespace VirtualMovieCatalog
             directors.Add("SomeNewGuy");
             directors.Add("SomeNewer_Guy");
 
-            var movie = new Movie("NewFilm3", new List<String>(), directors, new List<String>(), new List<String>(), new List<String>(), "Some description", 1999);
+            var discs = new List<String>();
+            discs.Add( "Pe birou");
 
+            var movie = new Movie("NewFilm6", new List<String>(), directors, new List<String>(), new List<String>(), discs, "Some description", 1999, 2);
 
-            dataManager.insertMovie( movie);
-
-            var mov = dataManager.getMovies();
-
+            //dataManager.getMovies( "director", "SomeNewer_Guy");
+            List<Movie> movies = dataManager.getMovies( "", "");
 
             Form1 mainForm = new Form1();
             MainController mainController = new MainController(mainForm);

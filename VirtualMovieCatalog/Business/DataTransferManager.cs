@@ -10,47 +10,203 @@ namespace VirtualMovieCatalog.Business
 {
     class DataTransferManager
     {
-        private String connectionString = null;
+        private const String connectionString = "Data Source=(LocalDb)\\v11.0;AttachDbFilename=|DataDirectory|\\movies.mdf;Initial Catalog=movies;Integrated Security=True";
 
-        public DataTransferManager( String user, String password, String server, String database)
+        public DataTransferManager()
+        {}
+
+        // filter can take the following values:
+        // name, year, nrdiscs, genre, actor, director, disc, ""
+        public List<Movie> getMovies( String filter, String value)
         {
-            connectionString = "Data Source=(LocalDb)\\v11.0;AttachDbFilename=|DataDirectory|\\movies.mdf;Initial Catalog=movies;Integrated Security=True";
+            List<int> movieIds = getMovieIds(filter, value);
+            return getMoviesByIds( movieIds);
         }
 
-        public List<String> getMovies()
+        private List<int> getMovieIds(String filter, String value)
         {
-            var ret = new List<String>();
+            List<int> movieIds = null;
 
-            String selectCommand = "SELECT * FROM movies";
+            switch (filter) 
+            {
+                case "name": case "year": case "nrdiscs":
+                    movieIds = simpleQuery(filter, value);
+                    break;
+                case "genre": case "actor": case "director": case "disc":
+                    movieIds = complexQuery(filter, value);
+                    break;
+                default:
+                    movieIds = allQuery();
+                    break;
+            }
+
+            return movieIds;
+        }
+
+        private List<int> allQuery()
+        {
+            String selectComand = "SELECT id FROM movies;";
+
+            List<int> movieIds = new List<int>();
 
             using (SqlConnection con = new SqlConnection(connectionString))
             {
-                string path;
-                path = System.IO.Path.GetDirectoryName(
-                   System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase);
-
                 con.Open();
-
-                using (SqlCommand select = new SqlCommand(selectCommand, con))
+                using (SqlCommand select = new SqlCommand(selectComand, con))
                 {
-
-                    var result = select.ExecuteReader();
+                    SqlDataReader result = select.ExecuteReader();
 
                     while (result.Read())
                     {
-                        ret.Add(result["name"].ToString());
+                        movieIds.Add(Convert.ToInt32(result["id"]));
                     }
                 }
             }
 
-            return ret;
+            return movieIds;
+        }
+
+        /**
+         * Selects movie ids
+         */
+        private List<int> simpleQuery(String property, String value)
+        {
+            String selectComand = "SELECT id FROM movies WHERE " + property + " = @value;";
+
+            List<int> movieIds = new List<int>();
+
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                con.Open();
+                using (SqlCommand select = new SqlCommand(selectComand, con))
+                {
+                    select.Parameters.Add("@value", System.Data.SqlDbType.NVarChar);
+                    select.Parameters["@value"].Value = value;
+
+                    SqlDataReader result = select.ExecuteReader();
+
+                    while (result.Read())
+                    {
+                        movieIds.Add(Convert.ToInt32(result["id"]));
+                    }
+                }
+            }
+
+            return movieIds;
+        }
+
+        /**
+         * Selects movie ids by joining multiple tables
+         */
+        private List<int> complexQuery( String property, String value)
+        {
+            String selectComand = "SELECT M.movieid id " + 
+                            "FROM movies_" + property + "s AS M " + 
+                            "INNER JOIN " + property + "s AS D ON " + 
+                            "D.id = M." + property + "id AND D.name = @value;";
+
+            List<int> movieIds = new List<int>();
+
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                con.Open();
+                using (SqlCommand select = new SqlCommand(selectComand, con))
+                {
+                    select.Parameters.Add("@value", System.Data.SqlDbType.NVarChar);
+                    select.Parameters["@value"].Value = value;
+
+                    SqlDataReader result = select.ExecuteReader();
+
+                    while (result.Read())
+                    {
+                        movieIds.Add(Convert.ToInt32(result["id"]));
+                    }
+                }
+            }
+
+            return movieIds;
+        }
+
+        private List<Movie> getMoviesByIds(List<int> movieIds)
+        {
+            List<Movie> movies = new List<Movie>();
+
+            foreach (int id in movieIds)
+            {
+                Dictionary<String, String> movieComponents = getMovieBasicComponents(id);
+                
+                List<string> directors = getById("director", id);
+                List<string> actors = getById("actor", id);
+                List<string> genres = getById("genre", id);
+                List<string> subtitles = getById("subtitle", id);
+                List<string> discs = getById("disc", id);
+
+                Movie movie = new Movie(movieComponents["name"], genres, directors, actors, subtitles, discs, movieComponents["description"], Convert.ToInt32(movieComponents["year"]), Convert.ToInt32(movieComponents["nrDiscs"]));
+                movies.Add(movie);
+            }
+
+            return movies;
+        }
+
+        private Dictionary<String, String> getMovieBasicComponents(int id)
+        {
+            var basicComponents = new Dictionary<String, String>();
+
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                con.Open();
+
+                using (SqlCommand select = new SqlCommand("SELECT name, description, year, nrDiscs FROM movies WHERE id = @id", con))
+                {
+                    select.Parameters.Add("@id", System.Data.SqlDbType.Int);
+                    select.Parameters["@id"].Value = id;
+
+                    SqlDataReader result = select.ExecuteReader();
+
+                    if (result.Read())
+                    {
+                        basicComponents.Add("name", result["name"].ToString());
+                        basicComponents.Add("description", result["description"].ToString());
+                        basicComponents.Add("year", result["year"].ToString());
+                        basicComponents.Add("nrDiscs", result["nrDiscs"].ToString());
+                    }
+                }
+            }
+
+            return basicComponents;
+        }
+
+        List<String> getById(String table, int id)
+        {
+            // no need to prepare for SQL INJECTION here (data is sanitized)
+            String selectComand = "SELECT D.name name FROM " + table + "s D " +
+                                  "INNER JOIN movies_" + table + "s M ON " + 
+                                  "D.id = M." + table + "id AND M.movieid = " + id;
+            
+            List<String> result = new List<String>();
+
+            using (SqlConnection con = new SqlConnection(connectionString)) {
+                con.Open();
+
+                using (SqlCommand select = new SqlCommand(selectComand, con))
+                {
+                    var queryResult = select.ExecuteReader();
+
+                    while (queryResult.Read())
+                    {
+                        result.Add(queryResult["name"].ToString());
+                    }
+                }
+            }
+
+            return result;
         }
 
         public bool insertMovie( Movie movie)
         {
             var status = true;
 
-            using ( var scope = new System.Transactions.TransactionScope())
+            using ( var transaction = new System.Transactions.TransactionScope())
             {
                 try {
                     int insertedId = addMovie( movie.Name, movie.Descripsion, movie.Year, movie.NrDiscs);
@@ -59,14 +215,16 @@ namespace VirtualMovieCatalog.Business
                     List<int> genreIds = add( "genres", movie.Genres);
                     List<int> subtitleIds = add( "subtitlesLang", movie.Subtitles);
                     List<int> actorIds = add( "actors", movie.Actors);
+                    List<int> discIds = add( "discs", movie.Discs);
 
                     linkMovieAnd( "director", insertedId, directorIds);
                     linkMovieAnd( "genre", insertedId, genreIds);
                     linkMovieAnd( "subtitle", insertedId, subtitleIds);
                     linkMovieAnd( "actor", insertedId, actorIds);
+                    linkMovieAnd( "disc", insertedId, discIds);
                     
                     // commits the changes to the database
-                    scope.Complete();
+                    transaction.Complete();
 
                 } catch (Exception e) {
                     status = false;
@@ -76,7 +234,9 @@ namespace VirtualMovieCatalog.Business
             return status;
         }
 
-
+        /**
+         * Inserts a movie into the database and returns the resulting id
+         */
         private int addMovie( String name, String description, int year, int nrDiscs)
         {
 
@@ -104,6 +264,9 @@ namespace VirtualMovieCatalog.Business
             return id;
         }
 
+        /**
+         * Adds all the @entities to the @table and returns the resulting ids
+         */
         private List<int> add( String table, List<String> entities) 
         {
 
@@ -118,7 +281,7 @@ namespace VirtualMovieCatalog.Business
                     "SELECT @id = ID FROM " + table + " WHERE name = @name; " + 
                 "END";
 
-            List<int> directorIds = new List<int>();
+            List<int> entityIds = new List<int>();
 
             using (SqlConnection con = new SqlConnection( connectionString))
             {
@@ -134,12 +297,12 @@ namespace VirtualMovieCatalog.Business
                         insert.Parameters["@name"].Value = name;
 
                         insert.ExecuteNonQuery();
-                        directorIds.Add( (int)insert.Parameters["@id"].Value);
+                        entityIds.Add( (int)insert.Parameters["@id"].Value);
                     }
                 }
             }
 
-            return directorIds;
+            return entityIds;
         }
 
         private void linkMovieAnd( String table, int movieId, List<int> entityIds)
