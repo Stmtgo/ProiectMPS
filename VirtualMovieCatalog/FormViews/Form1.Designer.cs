@@ -56,7 +56,7 @@
             this.ratingLabel = new System.Windows.Forms.Label();
             this.movieReleaseYearTextBox = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.MovieDescriptionTextBox = new System.Windows.Forms.TextBox();
+            this.movieDescriptionTextBox = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.movieActorsTextBox = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -222,7 +222,7 @@
             this.panel1.Controls.Add(this.ratingLabel);
             this.panel1.Controls.Add(this.movieReleaseYearTextBox);
             this.panel1.Controls.Add(this.label7);
-            this.panel1.Controls.Add(this.MovieDescriptionTextBox);
+            this.panel1.Controls.Add(this.movieDescriptionTextBox);
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.movieActorsTextBox);
             this.panel1.Controls.Add(this.label5);
@@ -335,15 +335,15 @@
             this.label7.TabIndex = 10;
             this.label7.Text = "An aparitie";
             // 
-            // MovieDescriptionTextBox
+            // movieDescriptionTextBox
             // 
-            this.MovieDescriptionTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
+            this.movieDescriptionTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.MovieDescriptionTextBox.Location = new System.Drawing.Point(184, 464);
-            this.MovieDescriptionTextBox.Multiline = true;
-            this.MovieDescriptionTextBox.Name = "MovieDescriptionTextBox";
-            this.MovieDescriptionTextBox.Size = new System.Drawing.Size(584, 61);
-            this.MovieDescriptionTextBox.TabIndex = 9;
+            this.movieDescriptionTextBox.Location = new System.Drawing.Point(184, 464);
+            this.movieDescriptionTextBox.Multiline = true;
+            this.movieDescriptionTextBox.Name = "movieDescriptionTextBox";
+            this.movieDescriptionTextBox.Size = new System.Drawing.Size(584, 61);
+            this.movieDescriptionTextBox.TabIndex = 9;
             // 
             // label6
             // 
@@ -529,7 +529,7 @@
         private System.Windows.Forms.Button addMovieButton;
         private System.Windows.Forms.Button deleteMovieButton;
         private System.Windows.Forms.Button editMovieButton;
-        private System.Windows.Forms.TextBox MovieDescriptionTextBox;
+        private System.Windows.Forms.TextBox movieDescriptionTextBox;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox movieReleaseYearTextBox;
         private System.Windows.Forms.Label label7;
