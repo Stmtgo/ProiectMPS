@@ -221,7 +221,7 @@
             this.movieDescriptionTextBox.Location = new System.Drawing.Point(12, 331);
             this.movieDescriptionTextBox.Multiline = true;
             this.movieDescriptionTextBox.Name = "movieDescriptionTextBox";
-            this.movieDescriptionTextBox.Size = new System.Drawing.Size(328, 105);
+            this.movieDescriptionTextBox.Size = new System.Drawing.Size(328, 43);
             this.movieDescriptionTextBox.TabIndex = 42;
             // 
             // label6
@@ -236,7 +236,7 @@
             // addMovieButton
             // 
             this.addMovieButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.addMovieButton.Location = new System.Drawing.Point(119, 460);
+            this.addMovieButton.Location = new System.Drawing.Point(119, 398);
             this.addMovieButton.Name = "addMovieButton";
             this.addMovieButton.Size = new System.Drawing.Size(98, 47);
             this.addMovieButton.TabIndex = 45;
@@ -247,7 +247,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(355, 523);
+            this.ClientSize = new System.Drawing.Size(355, 461);
             this.Controls.Add(this.addMovieButton);
             this.Controls.Add(this.movieTrailerUrlTextBox);
             this.Controls.Add(this.videoLinkLabel);
@@ -271,10 +271,12 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.movieNameTextBox);
             this.Controls.Add(this.label2);
-            this.MinimumSize = new System.Drawing.Size(371, 562);
+            this.MaximumSize = new System.Drawing.Size(371, 1000);
+            this.MinimumSize = new System.Drawing.Size(371, 500);
             this.Name = "AddMovieForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "AddMovieForm";
+            this.Load += new System.EventHandler(this.AddMovieForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

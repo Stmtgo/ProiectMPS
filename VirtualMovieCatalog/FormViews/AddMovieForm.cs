@@ -27,6 +27,11 @@ namespace VirtualMovieCatalog.FormViews
             this.mainController = mainController;
         }
 
+        private void AddMovieForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
        
     }
 }
