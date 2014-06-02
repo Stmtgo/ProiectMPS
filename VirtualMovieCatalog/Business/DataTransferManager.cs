@@ -41,7 +41,7 @@ namespace VirtualMovieCatalog.Business
             {
                 try
                 {
-                    int insertedId = addMovie(movie.Name, movie.Descripsion, movie.Year, movie.NrDiscs);
+                    int insertedId = addMovie(movie.Name, movie.Description, movie.Year, movie.NrDiscs);
 
                     List<int> directorIds = add("directors", movie.Directors);
                     List<int> genreIds = add("genres", movie.Genres);

@@ -46,7 +46,7 @@ namespace VirtualMovieCatalog
         {
             movieNameTextBox.Text = movie.Name;
             movieReleaseYearTextBox.Text = movie.Year.ToString();
-            movieDescriptionTextBox.Text += movie.Descripsion;
+            movieDescriptionTextBox.Text += movie.Description;
              
 
             foreach (var item in movie.Directors)
