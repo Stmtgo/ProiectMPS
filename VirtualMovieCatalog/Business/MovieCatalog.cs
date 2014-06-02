@@ -34,12 +34,6 @@ namespace VirtualMovieCatalog.Business
         }
 
         //Public Methods===========================================================================
-        public void AddMovie(string name, List<string> genres, List<string> directors, List<string> actors, List<string> subtitles, List<String> disks, string description, int year)
-        {
-            var createdMovie = CreateMovie(name, genres, directors, actors, subtitles, disks, description, year);
-            //dataTransferManager.AddMovie(createdMovie);
-        }
-
         public void DeleteMovie() 
         {
  
@@ -56,11 +50,11 @@ namespace VirtualMovieCatalog.Business
         }
 
         //Private Methods==========================================================================
-        private Movie CreateMovie(string name, List<string> genres, List<string> directors, List<string> actors, List<string> subtitles, List<String> discs, string description, int year)
-        {
-            int nrDiscs = discs.Count();
-            return new Movie(name, genres, directors, actors, subtitles, discs, description, year, nrDiscs);
-        }
+        //private Movie CreateMovie(string name, List<string> genres, List<string> directors, List<string> actors, List<string> subtitles, List<String> discs, string description, int year)
+        //{
+        //    int nrDiscs = discs.Count();
+        //    return new Movie(name, genres, directors, actors, subtitles, discs, description, year, nrDiscs);
+        //}
 
         
     }

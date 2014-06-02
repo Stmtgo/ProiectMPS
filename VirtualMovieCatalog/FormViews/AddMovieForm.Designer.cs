@@ -188,7 +188,6 @@
             this.movieNameTextBox.Name = "movieNameTextBox";
             this.movieNameTextBox.Size = new System.Drawing.Size(161, 20);
             this.movieNameTextBox.TabIndex = 0;
-            this.movieNameTextBox.TextChanged += new System.EventHandler(this.movieNameTextBox_TextChanged);
             // 
             // label2
             // 
@@ -243,6 +242,7 @@
             this.addMovieButton.TabIndex = 11;
             this.addMovieButton.Text = "Adauga Film";
             this.addMovieButton.UseVisualStyleBackColor = true;
+            this.addMovieButton.Click += new System.EventHandler(this.addMovieButton_Click);
             // 
             // AddMovieForm
             // 
@@ -277,7 +277,6 @@
             this.Name = "AddMovieForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "AddMovieForm";
-            this.Load += new System.EventHandler(this.AddMovieForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

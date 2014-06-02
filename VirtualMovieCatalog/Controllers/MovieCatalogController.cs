@@ -25,8 +25,9 @@ namespace VirtualMovieCatalog.Controllers
         //Public Methods===========================================================================
         public void LoadDataFromDb()
         {
-            //var moviesList =  dataTransferManager.getMovies();
-            //movieCatalog.ListOfMovies = moviesList;
+            var moviesList = dataTransferManager.getAllMovies();
+            movieCatalog.ListOfMovies = moviesList;
+            movieCatalog.CurrentlySelectedMovie = null;
         }
 
         public List<Movie> GetListOfMovies()
@@ -43,11 +44,26 @@ namespace VirtualMovieCatalog.Controllers
         {
             return movieCatalog.CurrentlySelectedMovie;
         }
+
+        public void AddMovie(string name, string genre, string directors, string movieCdDvdTextBox,string releaseYear, string rating,
+                             string duration, string subtitles, string actors, string trailerUrl, string description)
+        {
+            List<string> genreList = new List<string>(genre.Split(','));
+            List<string> directorsList = new List<string>(directors.Split(','));
+            List<string> movieCdDvdTextBoxList = new List<string>(movieCdDvdTextBox.Split(','));
+            List<string> subtitlesList = new List<string>(subtitles.Split(','));
+            List<string> actorsList = new List<string>(actors.Split(','));
+
+            Movie auxMovie = new Movie(name, genreList, directorsList, actorsList, subtitlesList, movieCdDvdTextBoxList, description, Convert.ToInt32(releaseYear), duration);
+            dataTransferManager.insertMovie(auxMovie);
+        }
         //Private Methods==========================================================================
         private void SetMovieList()
         {
            // movieCatalog.SetMoviesList(dataTransferManager.GetMovies());
         }
+
+
 
 
 

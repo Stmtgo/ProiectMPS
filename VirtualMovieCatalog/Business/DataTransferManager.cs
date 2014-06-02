@@ -41,7 +41,7 @@ namespace VirtualMovieCatalog.Business
             {
                 try
                 {
-                    int insertedId = addMovie(movie.Name, movie.Description, movie.Year, movie.NrDiscs);
+                    int insertedId = addMovie(movie.Name, movie.Description, movie.Year, movie.Duration);
 
                     List<int> directorIds = add("directors", movie.Directors);
                     List<int> genreIds = add("genres", movie.Genres);
@@ -189,7 +189,7 @@ namespace VirtualMovieCatalog.Business
                 List<string> subtitles = getById("subtitle", id);
                 List<string> discs = getById("disc", id);
 
-                Movie movie = new Movie(movieComponents["name"], genres, directors, actors, subtitles, discs, movieComponents["description"], Convert.ToInt32(movieComponents["year"]), Convert.ToInt32(movieComponents["nrDiscs"]));
+                Movie movie = new Movie(movieComponents["name"], genres, directors, actors, subtitles, discs, movieComponents["description"], Convert.ToInt32(movieComponents["year"]), movieComponents["nrDiscs"]);
                 movies.Add(movie);
             }
 
@@ -253,7 +253,7 @@ namespace VirtualMovieCatalog.Business
         /**
          * Inserts a movie into the database and returns the resulting id
          */
-        private int addMovie( String name, String description, int year, int nrDiscs)
+        private int addMovie( String name, String description, int year, string nrDiscs)
         {
 
             int id;

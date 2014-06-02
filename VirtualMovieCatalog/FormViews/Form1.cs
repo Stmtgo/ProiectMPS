@@ -27,6 +27,7 @@ namespace VirtualMovieCatalog
         //Public Methods===========================================================================
         public void UpdateListOfMovies(List<Movie> listOfMovies)
         {
+            ClearAllInfoShowingTextboxes();
             var contor = 1;
 
             foreach (var movie in listOfMovies)
@@ -53,30 +54,35 @@ namespace VirtualMovieCatalog
             {
                 movieRegizorTextbox.Text += item + ", ";
             }
+            if (movieRegizorTextbox.Text.Length > 2)
             movieRegizorTextbox.Text.Remove(movieRegizorTextbox.Text.Length - 2);
 
             foreach (var item in movie.Actors)
             {
                 movieActorsTextBox.Text += item + ", ";
             }
+            if (movieActorsTextBox.Text.Length > 2)
             movieActorsTextBox.Text.Remove(movieRegizorTextbox.Text.Length - 2);
 
             foreach (var item in movie.Genres)
             {
                 movieGenreTextBox.Text += item + ", ";
             }
+            if (movieGenreTextBox.Text.Length > 2)
             movieGenreTextBox.Text.Remove(movieRegizorTextbox.Text.Length - 2);
 
             foreach (var item in movie.Subtitles)
             {
                 movieSubtitleTextBox.Text += item + ", ";
             }
+            if (movieSubtitleTextBox.Text.Length > 2)
             movieSubtitleTextBox.Text.Remove(movieRegizorTextbox.Text.Length - 2);
 
             foreach (var item in movie.Discs)
             {
                 movieCdDvdTextBox.Text += item + ", ";
             }
+            if (movieCdDvdTextBox.Text.Length > 2)
             movieCdDvdTextBox.Text.Remove(movieRegizorTextbox.Text.Length - 2);
         }
 
@@ -90,13 +96,15 @@ namespace VirtualMovieCatalog
             movieDurationTextBox.Text = "";
             movieCdDvdTextBox.Text = "";
             movieActorsTextBox.Text = "";
+            movieDescriptionTextBox.Text = "";
         }
 
         //Private Methods==========================================================================
         private void moviesListView_Click(object sender, EventArgs e)
-        {
+        {           
             if (moviesListView.SelectedItems.Count > 0)
             {
+                ClearAllInfoShowingTextboxes();
                 int index = moviesListView.SelectedIndices[0];
                 mainController.SetCurrentlySelectedMovie(index);
             }

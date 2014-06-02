@@ -27,15 +27,22 @@ namespace VirtualMovieCatalog.FormViews
             this.mainController = mainController;
         }
 
-        private void AddMovieForm_Load(object sender, EventArgs e)
+        //Private Methods==========================================================================
+        private void addMovieButton_Click(object sender, EventArgs e)
         {
-
+            mainController.AddMovie(movieNameTextBox.Text,
+                                    movieGenreTextBox.Text,
+                                    movieRegizorTextbox.Text,
+                                    movieCdDvdTextBox.Text,
+                                    movieReleaseYearTextBox.Text,
+                                    movieRatingTextBox.Text,
+                                    movieDurationTextBox.Text,
+                                    movieSubtitleTextBox.Text,
+                                    movieActorsTextBox.Text,
+                                    movieTrailerUrlTextBox.Text,
+                                    movieDescriptionTextBox.Text);
         }
 
-        private void movieNameTextBox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
 
        
     }

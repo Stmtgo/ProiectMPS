@@ -18,13 +18,14 @@ namespace VirtualMovieCatalog.Controllers
             this.mainForm = mainForm;
             movieCatalogController = new MovieCatalogController();
             InitializeData();
-            InitializeForm();
+            
         }
 
         //Public Methods===========================================================================
         public void SetMainForm(Form1 mainForm)
         {
             this.mainForm = mainForm;
+            InitializeForm();
         }
 
         public void SetCurrentlySelectedMovie(int index)
@@ -33,7 +34,14 @@ namespace VirtualMovieCatalog.Controllers
             mainForm.DisplayMovieInfo(movieCatalogController.GetCurrentlySelectedMovie());
         }
 
-
+        public void AddMovie(string name, string genre, string directors, string movieCdDvdTextBox, string releaseYear, string rating,
+                             string duration, string subtitles, string actors, string trailerUrl, string description)
+        {
+            movieCatalogController.AddMovie(name, genre, directors, movieCdDvdTextBox, releaseYear, rating,
+                                            duration,subtitles,actors,trailerUrl,description);
+            InitializeData();
+            InitializeForm();
+        }
         //Private Methods==========================================================================
         private void InitializeData()
         {
@@ -42,8 +50,10 @@ namespace VirtualMovieCatalog.Controllers
 
         private void InitializeForm()
         {   
-            //mainForm.UpdateListOfMovies(movieCatalogController.GetListOfMovies());
+            mainForm.UpdateListOfMovies(movieCatalogController.GetListOfMovies());
         }
+
+
 
 
         
