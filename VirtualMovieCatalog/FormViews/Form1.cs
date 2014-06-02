@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using VirtualMovieCatalog.Business;
 using VirtualMovieCatalog.Controllers;
+using VirtualMovieCatalog.FormViews;
 
 namespace VirtualMovieCatalog
 {
@@ -45,6 +46,8 @@ namespace VirtualMovieCatalog
         {
             movieNameTextBox.Text = movie.Name;
             movieReleaseYearTextBox.Text = movie.Year.ToString();
+            movieDescriptionTextBox.Text += movie.Descripsion;
+             
 
             foreach (var item in movie.Directors)
             {
@@ -64,10 +67,30 @@ namespace VirtualMovieCatalog
             }
             movieGenreTextBox.Text.Remove(movieRegizorTextbox.Text.Length - 2);
 
+            foreach (var item in movie.Subtitles)
+            {
+                movieSubtitleTextBox.Text += item + ", ";
+            }
+            movieSubtitleTextBox.Text.Remove(movieRegizorTextbox.Text.Length - 2);
 
-
+            foreach (var item in movie.Discs)
+            {
+                movieCdDvdTextBox.Text += item + ", ";
+            }
+            movieCdDvdTextBox.Text.Remove(movieRegizorTextbox.Text.Length - 2);
         }
 
+        public void ClearAllInfoShowingTextboxes()
+        {
+            movieNameTextBox.Text = "";
+            movieRegizorTextbox.Text = "";
+            movieGenreTextBox.Text = "";
+            movieReleaseYearTextBox.Text = "";
+            movieRatingTextBox.Text = "";
+            movieDurationTextBox.Text = "";
+            movieCdDvdTextBox.Text = "";
+            movieActorsTextBox.Text = "";
+        }
 
         //Private Methods==========================================================================
         private void moviesListView_Click(object sender, EventArgs e)
@@ -77,6 +100,13 @@ namespace VirtualMovieCatalog
                 int index = moviesListView.SelectedIndices[0];
                 mainController.SetCurrentlySelectedMovie(index);
             }
+        }
+
+        private void addMovieButton_Click(object sender, EventArgs e)
+        {
+            AddMovieForm addMovieForm = new AddMovieForm();
+            addMovieForm.SetMainController(mainController);
+            addMovieForm.ShowDialog();
         }
 
         

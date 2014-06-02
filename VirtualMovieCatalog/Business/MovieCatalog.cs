@@ -45,13 +45,9 @@ namespace VirtualMovieCatalog.Business
  
         }
 
-        public void SaveMoviesList()
-        { 
-        }
-
-        public List<Movie> FilterListOfMovies(string criteria)
+        public void FilterListOfMovies(string criteria)
         {
-            return null;
+            
         }
 
         public void SetCurrentlySelectedMovie(int index)

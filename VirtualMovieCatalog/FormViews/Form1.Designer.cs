@@ -32,7 +32,6 @@
             this.moviesListView = new System.Windows.Forms.ListView();
             this.movieNumber = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.nameColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.label1 = new System.Windows.Forms.Label();
             this.searchButton = new System.Windows.Forms.Button();
             this.searchCriteriaComboBox = new System.Windows.Forms.ComboBox();
             this.searchTextBox = new System.Windows.Forms.TextBox();
@@ -71,6 +70,8 @@
             this.editMovieButton = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.movieSubtitleTextBox = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -86,10 +87,10 @@
             this.nameColumn});
             this.moviesListView.FullRowSelect = true;
             this.moviesListView.GridLines = true;
-            this.moviesListView.Location = new System.Drawing.Point(12, 91);
+            this.moviesListView.Location = new System.Drawing.Point(12, 64);
             this.moviesListView.MultiSelect = false;
             this.moviesListView.Name = "moviesListView";
-            this.moviesListView.Size = new System.Drawing.Size(158, 558);
+            this.moviesListView.Size = new System.Drawing.Size(158, 441);
             this.moviesListView.TabIndex = 0;
             this.moviesListView.UseCompatibleStateImageBehavior = false;
             this.moviesListView.View = System.Windows.Forms.View.Details;
@@ -105,18 +106,9 @@
             this.nameColumn.Text = "Nume";
             this.nameColumn.Width = 121;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(9, 75);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(53, 13);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Lista filme";
-            // 
             // searchButton
             // 
-            this.searchButton.Location = new System.Drawing.Point(271, 40);
+            this.searchButton.Location = new System.Drawing.Point(435, 63);
             this.searchButton.Name = "searchButton";
             this.searchButton.Size = new System.Drawing.Size(75, 23);
             this.searchButton.TabIndex = 2;
@@ -126,14 +118,14 @@
             // searchCriteriaComboBox
             // 
             this.searchCriteriaComboBox.FormattingEnabled = true;
-            this.searchCriteriaComboBox.Location = new System.Drawing.Point(176, 41);
+            this.searchCriteriaComboBox.Location = new System.Drawing.Point(340, 64);
             this.searchCriteriaComboBox.Name = "searchCriteriaComboBox";
             this.searchCriteriaComboBox.Size = new System.Drawing.Size(89, 21);
             this.searchCriteriaComboBox.TabIndex = 3;
             // 
             // searchTextBox
             // 
-            this.searchTextBox.Location = new System.Drawing.Point(10, 40);
+            this.searchTextBox.Location = new System.Drawing.Point(176, 65);
             this.searchTextBox.Name = "searchTextBox";
             this.searchTextBox.Size = new System.Drawing.Size(158, 20);
             this.searchTextBox.TabIndex = 4;
@@ -147,7 +139,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.menuStrip1.Size = new System.Drawing.Size(965, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(797, 24);
             this.menuStrip1.TabIndex = 5;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -199,7 +191,7 @@
             this.groupBox1.Controls.Add(this.panel1);
             this.groupBox1.Location = new System.Drawing.Point(176, 91);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(777, 558);
+            this.groupBox1.Size = new System.Drawing.Size(609, 414);
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Informatii film";
@@ -235,7 +227,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(3, 16);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(771, 539);
+            this.panel1.Size = new System.Drawing.Size(603, 395);
             this.panel1.TabIndex = 0;
             // 
             // movieDurationTextBox
@@ -274,9 +266,9 @@
             // 
             this.movieTrailerUrlTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.movieTrailerUrlTextBox.Location = new System.Drawing.Point(184, 416);
+            this.movieTrailerUrlTextBox.Location = new System.Drawing.Point(184, 272);
             this.movieTrailerUrlTextBox.Name = "movieTrailerUrlTextBox";
-            this.movieTrailerUrlTextBox.Size = new System.Drawing.Size(584, 20);
+            this.movieTrailerUrlTextBox.Size = new System.Drawing.Size(416, 20);
             this.movieTrailerUrlTextBox.TabIndex = 16;
             // 
             // videoLinkLabel
@@ -284,7 +276,7 @@
             this.videoLinkLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.videoLinkLabel.AutoSize = true;
-            this.videoLinkLabel.Location = new System.Drawing.Point(181, 400);
+            this.videoLinkLabel.Location = new System.Drawing.Point(181, 256);
             this.videoLinkLabel.Name = "videoLinkLabel";
             this.videoLinkLabel.Size = new System.Drawing.Size(61, 13);
             this.videoLinkLabel.TabIndex = 15;
@@ -298,7 +290,7 @@
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(184, 3);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(574, 385);
+            this.pictureBox1.Size = new System.Drawing.Size(406, 241);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox1.TabIndex = 14;
             this.pictureBox1.TabStop = false;
@@ -339,10 +331,10 @@
             // 
             this.movieDescriptionTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.movieDescriptionTextBox.Location = new System.Drawing.Point(184, 464);
+            this.movieDescriptionTextBox.Location = new System.Drawing.Point(184, 320);
             this.movieDescriptionTextBox.Multiline = true;
             this.movieDescriptionTextBox.Name = "movieDescriptionTextBox";
-            this.movieDescriptionTextBox.Size = new System.Drawing.Size(584, 61);
+            this.movieDescriptionTextBox.Size = new System.Drawing.Size(416, 61);
             this.movieDescriptionTextBox.TabIndex = 9;
             // 
             // label6
@@ -350,7 +342,7 @@
             this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(181, 448);
+            this.label6.Location = new System.Drawing.Point(181, 304);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(52, 13);
             this.label6.TabIndex = 8;
@@ -363,7 +355,7 @@
             this.movieActorsTextBox.Location = new System.Drawing.Point(6, 319);
             this.movieActorsTextBox.Multiline = true;
             this.movieActorsTextBox.Name = "movieActorsTextBox";
-            this.movieActorsTextBox.Size = new System.Drawing.Size(161, 206);
+            this.movieActorsTextBox.Size = new System.Drawing.Size(161, 62);
             this.movieActorsTextBox.TabIndex = 7;
             // 
             // label5
@@ -426,17 +418,18 @@
             // addMovieButton
             // 
             this.addMovieButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.addMovieButton.Location = new System.Drawing.Point(12, 655);
+            this.addMovieButton.Location = new System.Drawing.Point(12, 511);
             this.addMovieButton.Name = "addMovieButton";
             this.addMovieButton.Size = new System.Drawing.Size(75, 23);
             this.addMovieButton.TabIndex = 7;
             this.addMovieButton.Text = "Adauga film";
             this.addMovieButton.UseVisualStyleBackColor = true;
+            this.addMovieButton.Click += new System.EventHandler(this.addMovieButton_Click);
             // 
             // deleteMovieButton
             // 
             this.deleteMovieButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.deleteMovieButton.Location = new System.Drawing.Point(93, 655);
+            this.deleteMovieButton.Location = new System.Drawing.Point(93, 511);
             this.deleteMovieButton.Name = "deleteMovieButton";
             this.deleteMovieButton.Size = new System.Drawing.Size(75, 23);
             this.deleteMovieButton.TabIndex = 8;
@@ -446,7 +439,7 @@
             // editMovieButton
             // 
             this.editMovieButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.editMovieButton.Location = new System.Drawing.Point(179, 655);
+            this.editMovieButton.Location = new System.Drawing.Point(179, 511);
             this.editMovieButton.Name = "editMovieButton";
             this.editMovieButton.Size = new System.Drawing.Size(99, 23);
             this.editMovieButton.TabIndex = 9;
@@ -469,11 +462,31 @@
             this.movieSubtitleTextBox.Size = new System.Drawing.Size(161, 20);
             this.movieSubtitleTextBox.TabIndex = 22;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(13, 45);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(53, 13);
+            this.label1.TabIndex = 10;
+            this.label1.Text = "Lista filme";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(340, 45);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(62, 13);
+            this.label9.TabIndex = 11;
+            this.label9.Text = "Tip Cautare";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(965, 709);
+            this.ClientSize = new System.Drawing.Size(797, 565);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.editMovieButton);
             this.Controls.Add(this.deleteMovieButton);
             this.Controls.Add(this.addMovieButton);
@@ -481,11 +494,10 @@
             this.Controls.Add(this.searchTextBox);
             this.Controls.Add(this.searchCriteriaComboBox);
             this.Controls.Add(this.searchButton);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.moviesListView);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.MinimumSize = new System.Drawing.Size(585, 465);
+            this.MinimumSize = new System.Drawing.Size(813, 604);
             this.Name = "Form1";
             this.Text = "VortualMovieCatalog";
             this.menuStrip1.ResumeLayout(false);
@@ -503,7 +515,6 @@
         #endregion
 
         private System.Windows.Forms.ListView moviesListView;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button searchButton;
         private System.Windows.Forms.ComboBox searchCriteriaComboBox;
         private System.Windows.Forms.TextBox searchTextBox;
@@ -544,6 +555,8 @@
         private System.Windows.Forms.Label CDDVDLabel;
         private System.Windows.Forms.TextBox movieSubtitleTextBox;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label9;
 
 
     }

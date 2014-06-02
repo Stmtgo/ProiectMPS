@@ -34,8 +34,6 @@ namespace VirtualMovieCatalog.Controllers
         }
 
 
-
-
         //Private Methods==========================================================================
         private void InitializeData()
         {
