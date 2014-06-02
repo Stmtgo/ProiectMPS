@@ -29,8 +29,9 @@ namespace VirtualMovieCatalog
             var movie = new Movie("NewFilm6", new List<String>(), directors, new List<String>(), new List<String>(), discs, "Some description", 1999, 2);
 
             //dataManager.getMovies( "director", "SomeNewer_Guy");
-            List<Movie> movies = dataManager.getMovies( "", "");
+            //List<Movie> movies = dataManager.getMovies( "", "");
 
+            Application.EnableVisualStyles();
             Form1 mainForm = new Form1();
             MainController mainController = new MainController(mainForm);
         }

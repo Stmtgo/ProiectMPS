@@ -27,6 +27,7 @@ namespace VirtualMovieCatalog.Controllers
         private void InitializeForm()
         {
             Application.Run(mainForm);
+        
         }
 
     }
