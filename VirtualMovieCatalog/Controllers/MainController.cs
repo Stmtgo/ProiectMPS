@@ -13,22 +13,41 @@ namespace VirtualMovieCatalog.Controllers
         MovieCatalogController movieCatalogController;
 
         //Constructor(s)===========================================================================
-        public MainController(Form1 mainForm)
+        public MainController()
         {
             this.mainForm = mainForm;
             movieCatalogController = new MovieCatalogController();
-
+            InitializeData();
             InitializeForm();
         }
 
         //Public Methods===========================================================================
-
-        //Private Methods==========================================================================
-        private void InitializeForm()
+        public void SetMainForm(Form1 mainForm)
         {
-            Application.Run(mainForm);
-        
+            this.mainForm = mainForm;
         }
 
+        public void SetCurrentlySelectedMovie(int index)
+        {
+            movieCatalogController.SetCurrentlySelectedMovie(index);
+            mainForm.DisplayMovieInfo(movieCatalogController.GetCurrentlySelectedMovie());
+        }
+
+
+
+
+        //Private Methods==========================================================================
+        private void InitializeData()
+        {
+            movieCatalogController.LoadDataFromDb();
+        }
+
+        private void InitializeForm()
+        {   
+            //mainForm.UpdateListOfMovies(movieCatalogController.GetListOfMovies());
+        }
+
+
+        
     }
 }

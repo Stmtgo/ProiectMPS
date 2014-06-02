@@ -10,10 +10,14 @@ namespace VirtualMovieCatalog.Business
 {
     class DataTransferManager
     {
+        //Data Members=============================================================================
         private const String connectionString = "Data Source=(LocalDb)\\v11.0;AttachDbFilename=|DataDirectory|\\movies.mdf;Initial Catalog=movies;Integrated Security=True";
 
+        //Constructor(s)===========================================================================
         public DataTransferManager()
         {}
+
+        //Public Methods===========================================================================
 
         // filter can take the following values:
         // name, year, nrdiscs, genre, actor, director, disc, ""
@@ -23,6 +27,44 @@ namespace VirtualMovieCatalog.Business
             return getMoviesByIds( movieIds);
         }
 
+        public bool insertMovie(Movie movie)
+        {
+            var status = true;
+
+            using (var transaction = new System.Transactions.TransactionScope())
+            {
+                try
+                {
+                    int insertedId = addMovie(movie.Name, movie.Descripsion, movie.Year, movie.NrDiscs);
+
+                    List<int> directorIds = add("directors", movie.Directors);
+                    List<int> genreIds = add("genres", movie.Genres);
+                    List<int> subtitleIds = add("subtitlesLang", movie.Subtitles);
+                    List<int> actorIds = add("actors", movie.Actors);
+                    List<int> discIds = add("discs", movie.Discs);
+
+                    linkMovieAnd("director", insertedId, directorIds);
+                    linkMovieAnd("genre", insertedId, genreIds);
+                    linkMovieAnd("subtitle", insertedId, subtitleIds);
+                    linkMovieAnd("actor", insertedId, actorIds);
+                    linkMovieAnd("disc", insertedId, discIds);
+
+                    // commits the changes to the database
+                    transaction.Complete();
+
+                }
+                catch (Exception e)
+                {
+                    status = false;
+                }
+            }
+
+            return status;
+        }
+
+
+
+        //Private Methods==========================================================================
         private List<int> getMovieIds(String filter, String value)
         {
             List<int> movieIds = null;
@@ -176,7 +218,7 @@ namespace VirtualMovieCatalog.Business
             return basicComponents;
         }
 
-        List<String> getById(String table, int id)
+        private List<String> getById(String table, int id)
         {
             // no need to prepare for SQL INJECTION here (data is sanitized)
             String selectComand = "SELECT D.name name FROM " + table + "s D " +
@@ -200,38 +242,6 @@ namespace VirtualMovieCatalog.Business
             }
 
             return result;
-        }
-
-        public bool insertMovie( Movie movie)
-        {
-            var status = true;
-
-            using ( var transaction = new System.Transactions.TransactionScope())
-            {
-                try {
-                    int insertedId = addMovie( movie.Name, movie.Descripsion, movie.Year, movie.NrDiscs);
-                    
-                    List<int> directorIds = add( "directors", movie.Directors);
-                    List<int> genreIds = add( "genres", movie.Genres);
-                    List<int> subtitleIds = add( "subtitlesLang", movie.Subtitles);
-                    List<int> actorIds = add( "actors", movie.Actors);
-                    List<int> discIds = add( "discs", movie.Discs);
-
-                    linkMovieAnd( "director", insertedId, directorIds);
-                    linkMovieAnd( "genre", insertedId, genreIds);
-                    linkMovieAnd( "subtitle", insertedId, subtitleIds);
-                    linkMovieAnd( "actor", insertedId, actorIds);
-                    linkMovieAnd( "disc", insertedId, discIds);
-                    
-                    // commits the changes to the database
-                    transaction.Complete();
-
-                } catch (Exception e) {
-                    status = false;
-                }
-            }
-
-            return status;
         }
 
         /**

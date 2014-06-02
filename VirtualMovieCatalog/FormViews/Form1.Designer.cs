@@ -45,30 +45,32 @@
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.movieDurationTextBox = new System.Windows.Forms.TextBox();
+            this.durataFilmLabel = new System.Windows.Forms.Label();
+            this.movieCdDvdTextBox = new System.Windows.Forms.TextBox();
+            this.CDDVDLabel = new System.Windows.Forms.Label();
+            this.movieTrailerUrlTextBox = new System.Windows.Forms.TextBox();
+            this.videoLinkLabel = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.movieRatingTextBox = new System.Windows.Forms.TextBox();
             this.ratingLabel = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.movieReleaseYearTextBox = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.MovieDescriptionTextBox = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.movieActorsTextBox = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.movieRegizorTextbox = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.movieGenreTextBox = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.movieNameTextBox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.addMovieButton = new System.Windows.Forms.Button();
             this.deleteMovieButton = new System.Windows.Forms.Button();
             this.editMovieButton = new System.Windows.Forms.Button();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.videoLinkLabel = new System.Windows.Forms.Label();
-            this.CDDVDLabel = new System.Windows.Forms.Label();
-            this.textBox9 = new System.Windows.Forms.TextBox();
-            this.textBox10 = new System.Windows.Forms.TextBox();
-            this.durataFilmLabel = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.movieSubtitleTextBox = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -82,13 +84,16 @@
             this.moviesListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.movieNumber,
             this.nameColumn});
+            this.moviesListView.FullRowSelect = true;
             this.moviesListView.GridLines = true;
             this.moviesListView.Location = new System.Drawing.Point(12, 91);
+            this.moviesListView.MultiSelect = false;
             this.moviesListView.Name = "moviesListView";
             this.moviesListView.Size = new System.Drawing.Size(158, 558);
             this.moviesListView.TabIndex = 0;
             this.moviesListView.UseCompatibleStateImageBehavior = false;
             this.moviesListView.View = System.Windows.Forms.View.Details;
+            this.moviesListView.Click += new System.EventHandler(this.moviesListView_Click);
             // 
             // movieNumber
             // 
@@ -103,12 +108,11 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 75);
+            this.label1.Location = new System.Drawing.Point(9, 75);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(53, 13);
             this.label1.TabIndex = 1;
             this.label1.Text = "Lista filme";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // searchButton
             // 
@@ -129,7 +133,7 @@
             // 
             // searchTextBox
             // 
-            this.searchTextBox.Location = new System.Drawing.Point(12, 42);
+            this.searchTextBox.Location = new System.Drawing.Point(10, 40);
             this.searchTextBox.Name = "searchTextBox";
             this.searchTextBox.Size = new System.Drawing.Size(158, 20);
             this.searchTextBox.TabIndex = 4;
@@ -205,32 +209,86 @@
             this.panel1.AutoScroll = true;
             this.panel1.AutoSize = true;
             this.panel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.panel1.Controls.Add(this.textBox10);
+            this.panel1.Controls.Add(this.movieSubtitleTextBox);
+            this.panel1.Controls.Add(this.label8);
+            this.panel1.Controls.Add(this.movieDurationTextBox);
             this.panel1.Controls.Add(this.durataFilmLabel);
-            this.panel1.Controls.Add(this.textBox9);
+            this.panel1.Controls.Add(this.movieCdDvdTextBox);
             this.panel1.Controls.Add(this.CDDVDLabel);
-            this.panel1.Controls.Add(this.textBox8);
+            this.panel1.Controls.Add(this.movieTrailerUrlTextBox);
             this.panel1.Controls.Add(this.videoLinkLabel);
             this.panel1.Controls.Add(this.pictureBox1);
-            this.panel1.Controls.Add(this.textBox7);
+            this.panel1.Controls.Add(this.movieRatingTextBox);
             this.panel1.Controls.Add(this.ratingLabel);
-            this.panel1.Controls.Add(this.textBox6);
+            this.panel1.Controls.Add(this.movieReleaseYearTextBox);
             this.panel1.Controls.Add(this.label7);
-            this.panel1.Controls.Add(this.textBox5);
+            this.panel1.Controls.Add(this.MovieDescriptionTextBox);
             this.panel1.Controls.Add(this.label6);
-            this.panel1.Controls.Add(this.textBox4);
+            this.panel1.Controls.Add(this.movieActorsTextBox);
             this.panel1.Controls.Add(this.label5);
-            this.panel1.Controls.Add(this.textBox3);
+            this.panel1.Controls.Add(this.movieRegizorTextbox);
             this.panel1.Controls.Add(this.label4);
-            this.panel1.Controls.Add(this.textBox2);
+            this.panel1.Controls.Add(this.movieGenreTextBox);
             this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.textBox1);
+            this.panel1.Controls.Add(this.movieNameTextBox);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(3, 16);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(771, 539);
             this.panel1.TabIndex = 0;
+            // 
+            // movieDurationTextBox
+            // 
+            this.movieDurationTextBox.Location = new System.Drawing.Point(113, 223);
+            this.movieDurationTextBox.Name = "movieDurationTextBox";
+            this.movieDurationTextBox.Size = new System.Drawing.Size(54, 20);
+            this.movieDurationTextBox.TabIndex = 20;
+            // 
+            // durataFilmLabel
+            // 
+            this.durataFilmLabel.AutoSize = true;
+            this.durataFilmLabel.Location = new System.Drawing.Point(110, 207);
+            this.durataFilmLabel.Name = "durataFilmLabel";
+            this.durataFilmLabel.Size = new System.Drawing.Size(39, 13);
+            this.durataFilmLabel.TabIndex = 19;
+            this.durataFilmLabel.Text = "Durata";
+            // 
+            // movieCdDvdTextBox
+            // 
+            this.movieCdDvdTextBox.Location = new System.Drawing.Point(6, 175);
+            this.movieCdDvdTextBox.Name = "movieCdDvdTextBox";
+            this.movieCdDvdTextBox.Size = new System.Drawing.Size(161, 20);
+            this.movieCdDvdTextBox.TabIndex = 18;
+            // 
+            // CDDVDLabel
+            // 
+            this.CDDVDLabel.AutoSize = true;
+            this.CDDVDLabel.Location = new System.Drawing.Point(3, 159);
+            this.CDDVDLabel.Name = "CDDVDLabel";
+            this.CDDVDLabel.Size = new System.Drawing.Size(50, 13);
+            this.CDDVDLabel.TabIndex = 17;
+            this.CDDVDLabel.Text = "CD/DVD";
+            // 
+            // movieTrailerUrlTextBox
+            // 
+            this.movieTrailerUrlTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.movieTrailerUrlTextBox.Location = new System.Drawing.Point(184, 416);
+            this.movieTrailerUrlTextBox.Name = "movieTrailerUrlTextBox";
+            this.movieTrailerUrlTextBox.Size = new System.Drawing.Size(584, 20);
+            this.movieTrailerUrlTextBox.TabIndex = 16;
+            // 
+            // videoLinkLabel
+            // 
+            this.videoLinkLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.videoLinkLabel.AutoSize = true;
+            this.videoLinkLabel.Location = new System.Drawing.Point(181, 400);
+            this.videoLinkLabel.Name = "videoLinkLabel";
+            this.videoLinkLabel.Size = new System.Drawing.Size(61, 13);
+            this.videoLinkLabel.TabIndex = 15;
+            this.videoLinkLabel.Text = "Trailer URL";
             // 
             // pictureBox1
             // 
@@ -245,12 +303,12 @@
             this.pictureBox1.TabIndex = 14;
             this.pictureBox1.TabStop = false;
             // 
-            // textBox7
+            // movieRatingTextBox
             // 
-            this.textBox7.Location = new System.Drawing.Point(69, 223);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(35, 20);
-            this.textBox7.TabIndex = 13;
+            this.movieRatingTextBox.Location = new System.Drawing.Point(69, 223);
+            this.movieRatingTextBox.Name = "movieRatingTextBox";
+            this.movieRatingTextBox.Size = new System.Drawing.Size(35, 20);
+            this.movieRatingTextBox.TabIndex = 13;
             // 
             // ratingLabel
             // 
@@ -261,12 +319,12 @@
             this.ratingLabel.TabIndex = 12;
             this.ratingLabel.Text = "Rating";
             // 
-            // textBox6
+            // movieReleaseYearTextBox
             // 
-            this.textBox6.Location = new System.Drawing.Point(6, 223);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(54, 20);
-            this.textBox6.TabIndex = 11;
+            this.movieReleaseYearTextBox.Location = new System.Drawing.Point(6, 223);
+            this.movieReleaseYearTextBox.Name = "movieReleaseYearTextBox";
+            this.movieReleaseYearTextBox.Size = new System.Drawing.Size(54, 20);
+            this.movieReleaseYearTextBox.TabIndex = 11;
             // 
             // label7
             // 
@@ -277,15 +335,15 @@
             this.label7.TabIndex = 10;
             this.label7.Text = "An aparitie";
             // 
-            // textBox5
+            // MovieDescriptionTextBox
             // 
-            this.textBox5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
+            this.MovieDescriptionTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox5.Location = new System.Drawing.Point(184, 464);
-            this.textBox5.Multiline = true;
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(584, 61);
-            this.textBox5.TabIndex = 9;
+            this.MovieDescriptionTextBox.Location = new System.Drawing.Point(184, 464);
+            this.MovieDescriptionTextBox.Multiline = true;
+            this.MovieDescriptionTextBox.Name = "MovieDescriptionTextBox";
+            this.MovieDescriptionTextBox.Size = new System.Drawing.Size(584, 61);
+            this.MovieDescriptionTextBox.TabIndex = 9;
             // 
             // label6
             // 
@@ -298,31 +356,31 @@
             this.label6.TabIndex = 8;
             this.label6.Text = "Descriere";
             // 
-            // textBox4
+            // movieActorsTextBox
             // 
-            this.textBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            this.movieActorsTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)));
-            this.textBox4.Location = new System.Drawing.Point(6, 274);
-            this.textBox4.Multiline = true;
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(161, 251);
-            this.textBox4.TabIndex = 7;
+            this.movieActorsTextBox.Location = new System.Drawing.Point(6, 319);
+            this.movieActorsTextBox.Multiline = true;
+            this.movieActorsTextBox.Name = "movieActorsTextBox";
+            this.movieActorsTextBox.Size = new System.Drawing.Size(161, 206);
+            this.movieActorsTextBox.TabIndex = 7;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(3, 255);
+            this.label5.Location = new System.Drawing.Point(3, 303);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(34, 13);
             this.label5.TabIndex = 6;
             this.label5.Text = "Actori";
             // 
-            // textBox3
+            // movieRegizorTextbox
             // 
-            this.textBox3.Location = new System.Drawing.Point(6, 127);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(161, 20);
-            this.textBox3.TabIndex = 5;
+            this.movieRegizorTextbox.Location = new System.Drawing.Point(6, 127);
+            this.movieRegizorTextbox.Name = "movieRegizorTextbox";
+            this.movieRegizorTextbox.Size = new System.Drawing.Size(161, 20);
+            this.movieRegizorTextbox.TabIndex = 5;
             // 
             // label4
             // 
@@ -333,13 +391,12 @@
             this.label4.TabIndex = 4;
             this.label4.Text = "Regizor";
             // 
-            // textBox2
+            // movieGenreTextBox
             // 
-            this.textBox2.Location = new System.Drawing.Point(6, 79);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(161, 20);
-            this.textBox2.TabIndex = 3;
-            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+            this.movieGenreTextBox.Location = new System.Drawing.Point(6, 79);
+            this.movieGenreTextBox.Name = "movieGenreTextBox";
+            this.movieGenreTextBox.Size = new System.Drawing.Size(161, 20);
+            this.movieGenreTextBox.TabIndex = 3;
             // 
             // label3
             // 
@@ -349,14 +406,13 @@
             this.label3.Size = new System.Drawing.Size(27, 13);
             this.label3.TabIndex = 2;
             this.label3.Text = "Gen";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
-            // textBox1
+            // movieNameTextBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(6, 30);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(161, 20);
-            this.textBox1.TabIndex = 1;
+            this.movieNameTextBox.Location = new System.Drawing.Point(6, 30);
+            this.movieNameTextBox.Name = "movieNameTextBox";
+            this.movieNameTextBox.Size = new System.Drawing.Size(161, 20);
+            this.movieNameTextBox.TabIndex = 1;
             // 
             // label2
             // 
@@ -397,57 +453,21 @@
             this.editMovieButton.Text = "Editeaza film";
             this.editMovieButton.UseVisualStyleBackColor = true;
             // 
-            // textBox8
+            // label8
             // 
-            this.textBox8.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox8.Location = new System.Drawing.Point(184, 416);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(584, 20);
-            this.textBox8.TabIndex = 16;
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(3, 255);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(48, 13);
+            this.label8.TabIndex = 21;
+            this.label8.Text = "Subtitrari";
             // 
-            // videoLinkLabel
+            // movieSubtitleTextBox
             // 
-            this.videoLinkLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.videoLinkLabel.AutoSize = true;
-            this.videoLinkLabel.Location = new System.Drawing.Point(181, 400);
-            this.videoLinkLabel.Name = "videoLinkLabel";
-            this.videoLinkLabel.Size = new System.Drawing.Size(61, 13);
-            this.videoLinkLabel.TabIndex = 15;
-            this.videoLinkLabel.Text = "Trailer URL";
-            // 
-            // CDDVDLabel
-            // 
-            this.CDDVDLabel.AutoSize = true;
-            this.CDDVDLabel.Location = new System.Drawing.Point(3, 159);
-            this.CDDVDLabel.Name = "CDDVDLabel";
-            this.CDDVDLabel.Size = new System.Drawing.Size(50, 13);
-            this.CDDVDLabel.TabIndex = 17;
-            this.CDDVDLabel.Text = "CD/DVD";
-            // 
-            // textBox9
-            // 
-            this.textBox9.Location = new System.Drawing.Point(6, 175);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(161, 20);
-            this.textBox9.TabIndex = 18;
-            // 
-            // textBox10
-            // 
-            this.textBox10.Location = new System.Drawing.Point(113, 223);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(54, 20);
-            this.textBox10.TabIndex = 20;
-            // 
-            // durataFilmLabel
-            // 
-            this.durataFilmLabel.AutoSize = true;
-            this.durataFilmLabel.Location = new System.Drawing.Point(110, 207);
-            this.durataFilmLabel.Name = "durataFilmLabel";
-            this.durataFilmLabel.Size = new System.Drawing.Size(39, 13);
-            this.durataFilmLabel.TabIndex = 19;
-            this.durataFilmLabel.Text = "Durata";
+            this.movieSubtitleTextBox.Location = new System.Drawing.Point(6, 271);
+            this.movieSubtitleTextBox.Name = "movieSubtitleTextBox";
+            this.movieSubtitleTextBox.Size = new System.Drawing.Size(161, 20);
+            this.movieSubtitleTextBox.TabIndex = 22;
             // 
             // Form1
             // 
@@ -496,32 +516,34 @@
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox movieNameTextBox;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox movieGenreTextBox;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ColumnHeader movieNumber;
         private System.Windows.Forms.ColumnHeader nameColumn;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox movieActorsTextBox;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox movieRegizorTextbox;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button addMovieButton;
         private System.Windows.Forms.Button deleteMovieButton;
         private System.Windows.Forms.Button editMovieButton;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox MovieDescriptionTextBox;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox movieReleaseYearTextBox;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.TextBox movieRatingTextBox;
         private System.Windows.Forms.Label ratingLabel;
-        private System.Windows.Forms.TextBox textBox8;
+        private System.Windows.Forms.TextBox movieTrailerUrlTextBox;
         private System.Windows.Forms.Label videoLinkLabel;
-        private System.Windows.Forms.TextBox textBox10;
+        private System.Windows.Forms.TextBox movieDurationTextBox;
         private System.Windows.Forms.Label durataFilmLabel;
-        private System.Windows.Forms.TextBox textBox9;
+        private System.Windows.Forms.TextBox movieCdDvdTextBox;
         private System.Windows.Forms.Label CDDVDLabel;
+        private System.Windows.Forms.TextBox movieSubtitleTextBox;
+        private System.Windows.Forms.Label label8;
 
 
     }
