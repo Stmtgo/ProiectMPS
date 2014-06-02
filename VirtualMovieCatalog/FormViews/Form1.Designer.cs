@@ -85,7 +85,7 @@
             this.moviesListView.GridLines = true;
             this.moviesListView.Location = new System.Drawing.Point(12, 91);
             this.moviesListView.Name = "moviesListView";
-            this.moviesListView.Size = new System.Drawing.Size(158, 413);
+            this.moviesListView.Size = new System.Drawing.Size(158, 558);
             this.moviesListView.TabIndex = 0;
             this.moviesListView.UseCompatibleStateImageBehavior = false;
             this.moviesListView.View = System.Windows.Forms.View.Details;
@@ -143,7 +143,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.menuStrip1.Size = new System.Drawing.Size(756, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(965, 24);
             this.menuStrip1.TabIndex = 5;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -195,7 +195,7 @@
             this.groupBox1.Controls.Add(this.panel1);
             this.groupBox1.Location = new System.Drawing.Point(176, 91);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(568, 413);
+            this.groupBox1.Size = new System.Drawing.Size(777, 558);
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Informatii film";
@@ -229,7 +229,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(3, 16);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(562, 394);
+            this.panel1.Size = new System.Drawing.Size(771, 539);
             this.panel1.TabIndex = 0;
             // 
             // pictureBox1
@@ -240,7 +240,7 @@
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(184, 3);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(365, 240);
+            this.pictureBox1.Size = new System.Drawing.Size(574, 385);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox1.TabIndex = 14;
             this.pictureBox1.TabStop = false;
@@ -281,10 +281,10 @@
             // 
             this.textBox5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox5.Location = new System.Drawing.Point(184, 319);
+            this.textBox5.Location = new System.Drawing.Point(184, 464);
             this.textBox5.Multiline = true;
             this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(375, 61);
+            this.textBox5.Size = new System.Drawing.Size(584, 61);
             this.textBox5.TabIndex = 9;
             // 
             // label6
@@ -292,7 +292,7 @@
             this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(181, 303);
+            this.label6.Location = new System.Drawing.Point(181, 448);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(52, 13);
             this.label6.TabIndex = 8;
@@ -302,10 +302,10 @@
             // 
             this.textBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)));
-            this.textBox4.Location = new System.Drawing.Point(6, 271);
+            this.textBox4.Location = new System.Drawing.Point(6, 274);
             this.textBox4.Multiline = true;
             this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(161, 109);
+            this.textBox4.Size = new System.Drawing.Size(161, 251);
             this.textBox4.TabIndex = 7;
             // 
             // label5
@@ -370,7 +370,7 @@
             // addMovieButton
             // 
             this.addMovieButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.addMovieButton.Location = new System.Drawing.Point(12, 510);
+            this.addMovieButton.Location = new System.Drawing.Point(12, 655);
             this.addMovieButton.Name = "addMovieButton";
             this.addMovieButton.Size = new System.Drawing.Size(75, 23);
             this.addMovieButton.TabIndex = 7;
@@ -380,7 +380,7 @@
             // deleteMovieButton
             // 
             this.deleteMovieButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.deleteMovieButton.Location = new System.Drawing.Point(93, 510);
+            this.deleteMovieButton.Location = new System.Drawing.Point(93, 655);
             this.deleteMovieButton.Name = "deleteMovieButton";
             this.deleteMovieButton.Size = new System.Drawing.Size(75, 23);
             this.deleteMovieButton.TabIndex = 8;
@@ -390,7 +390,7 @@
             // editMovieButton
             // 
             this.editMovieButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.editMovieButton.Location = new System.Drawing.Point(179, 510);
+            this.editMovieButton.Location = new System.Drawing.Point(179, 655);
             this.editMovieButton.Name = "editMovieButton";
             this.editMovieButton.Size = new System.Drawing.Size(99, 23);
             this.editMovieButton.TabIndex = 9;
@@ -401,9 +401,9 @@
             // 
             this.textBox8.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox8.Location = new System.Drawing.Point(184, 271);
+            this.textBox8.Location = new System.Drawing.Point(184, 416);
             this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(375, 20);
+            this.textBox8.Size = new System.Drawing.Size(584, 20);
             this.textBox8.TabIndex = 16;
             // 
             // videoLinkLabel
@@ -411,7 +411,7 @@
             this.videoLinkLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.videoLinkLabel.AutoSize = true;
-            this.videoLinkLabel.Location = new System.Drawing.Point(181, 255);
+            this.videoLinkLabel.Location = new System.Drawing.Point(181, 400);
             this.videoLinkLabel.Name = "videoLinkLabel";
             this.videoLinkLabel.Size = new System.Drawing.Size(61, 13);
             this.videoLinkLabel.TabIndex = 15;
@@ -453,7 +453,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(756, 564);
+            this.ClientSize = new System.Drawing.Size(965, 709);
             this.Controls.Add(this.editMovieButton);
             this.Controls.Add(this.deleteMovieButton);
             this.Controls.Add(this.addMovieButton);

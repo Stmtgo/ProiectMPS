@@ -26,10 +26,10 @@ namespace VirtualMovieCatalog
             var discs = new List<String>();
             discs.Add( "Pe birou");
 
-            var movie = new Movie("NewFilm6", new List<String>(), directors, new List<String>(), new List<String>(), discs, "Some description", 1999, 2);
+            var movie = new Movie("NewFilm6", new List<String>(), directors, new List<String>(), new List<String>(), discs, "Some description", 1992, 2);
 
-            //dataManager.getMovies( "director", "SomeNewer_Guy");
-            //List<Movie> movies = dataManager.getMovies( "", "");
+            dataManager.getMovies("director", "SomeNewer_Guy");
+            List<Movie> movies = dataManager.getMovies("", "");
 
             Application.EnableVisualStyles();
             Form1 mainForm = new Form1();
