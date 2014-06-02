@@ -32,6 +32,11 @@ namespace VirtualMovieCatalog.FormViews
 
         }
 
+        private void movieNameTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
        
     }
 }

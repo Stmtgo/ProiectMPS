@@ -58,7 +58,7 @@
             this.movieSubtitleTextBox.Location = new System.Drawing.Point(179, 125);
             this.movieSubtitleTextBox.Name = "movieSubtitleTextBox";
             this.movieSubtitleTextBox.Size = new System.Drawing.Size(161, 20);
-            this.movieSubtitleTextBox.TabIndex = 40;
+            this.movieSubtitleTextBox.TabIndex = 7;
             // 
             // label8
             // 
@@ -74,7 +74,7 @@
             this.movieDurationTextBox.Location = new System.Drawing.Point(119, 125);
             this.movieDurationTextBox.Name = "movieDurationTextBox";
             this.movieDurationTextBox.Size = new System.Drawing.Size(54, 20);
-            this.movieDurationTextBox.TabIndex = 38;
+            this.movieDurationTextBox.TabIndex = 6;
             // 
             // durataFilmLabel
             // 
@@ -90,7 +90,7 @@
             this.movieCdDvdTextBox.Location = new System.Drawing.Point(179, 78);
             this.movieCdDvdTextBox.Name = "movieCdDvdTextBox";
             this.movieCdDvdTextBox.Size = new System.Drawing.Size(161, 20);
-            this.movieCdDvdTextBox.TabIndex = 36;
+            this.movieCdDvdTextBox.TabIndex = 3;
             // 
             // CDDVDLabel
             // 
@@ -106,7 +106,7 @@
             this.movieRatingTextBox.Location = new System.Drawing.Point(75, 125);
             this.movieRatingTextBox.Name = "movieRatingTextBox";
             this.movieRatingTextBox.Size = new System.Drawing.Size(35, 20);
-            this.movieRatingTextBox.TabIndex = 34;
+            this.movieRatingTextBox.TabIndex = 5;
             // 
             // ratingLabel
             // 
@@ -122,7 +122,7 @@
             this.movieReleaseYearTextBox.Location = new System.Drawing.Point(12, 125);
             this.movieReleaseYearTextBox.Name = "movieReleaseYearTextBox";
             this.movieReleaseYearTextBox.Size = new System.Drawing.Size(54, 20);
-            this.movieReleaseYearTextBox.TabIndex = 32;
+            this.movieReleaseYearTextBox.TabIndex = 4;
             // 
             // label7
             // 
@@ -139,7 +139,7 @@
             this.movieActorsTextBox.Multiline = true;
             this.movieActorsTextBox.Name = "movieActorsTextBox";
             this.movieActorsTextBox.Size = new System.Drawing.Size(328, 82);
-            this.movieActorsTextBox.TabIndex = 30;
+            this.movieActorsTextBox.TabIndex = 8;
             // 
             // label5
             // 
@@ -155,7 +155,7 @@
             this.movieRegizorTextbox.Location = new System.Drawing.Point(12, 78);
             this.movieRegizorTextbox.Name = "movieRegizorTextbox";
             this.movieRegizorTextbox.Size = new System.Drawing.Size(161, 20);
-            this.movieRegizorTextbox.TabIndex = 28;
+            this.movieRegizorTextbox.TabIndex = 2;
             // 
             // label4
             // 
@@ -171,7 +171,7 @@
             this.movieGenreTextBox.Location = new System.Drawing.Point(179, 31);
             this.movieGenreTextBox.Name = "movieGenreTextBox";
             this.movieGenreTextBox.Size = new System.Drawing.Size(161, 20);
-            this.movieGenreTextBox.TabIndex = 26;
+            this.movieGenreTextBox.TabIndex = 1;
             // 
             // label3
             // 
@@ -187,7 +187,8 @@
             this.movieNameTextBox.Location = new System.Drawing.Point(12, 31);
             this.movieNameTextBox.Name = "movieNameTextBox";
             this.movieNameTextBox.Size = new System.Drawing.Size(161, 20);
-            this.movieNameTextBox.TabIndex = 24;
+            this.movieNameTextBox.TabIndex = 0;
+            this.movieNameTextBox.TextChanged += new System.EventHandler(this.movieNameTextBox_TextChanged);
             // 
             // label2
             // 
@@ -203,7 +204,7 @@
             this.movieTrailerUrlTextBox.Location = new System.Drawing.Point(12, 283);
             this.movieTrailerUrlTextBox.Name = "movieTrailerUrlTextBox";
             this.movieTrailerUrlTextBox.Size = new System.Drawing.Size(328, 20);
-            this.movieTrailerUrlTextBox.TabIndex = 44;
+            this.movieTrailerUrlTextBox.TabIndex = 9;
             // 
             // videoLinkLabel
             // 
@@ -216,13 +217,13 @@
             // 
             // movieDescriptionTextBox
             // 
-            this.movieDescriptionTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)));
+            this.movieDescriptionTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.movieDescriptionTextBox.Location = new System.Drawing.Point(12, 331);
             this.movieDescriptionTextBox.Multiline = true;
             this.movieDescriptionTextBox.Name = "movieDescriptionTextBox";
             this.movieDescriptionTextBox.Size = new System.Drawing.Size(328, 43);
-            this.movieDescriptionTextBox.TabIndex = 42;
+            this.movieDescriptionTextBox.TabIndex = 10;
             // 
             // label6
             // 
@@ -239,7 +240,7 @@
             this.addMovieButton.Location = new System.Drawing.Point(119, 398);
             this.addMovieButton.Name = "addMovieButton";
             this.addMovieButton.Size = new System.Drawing.Size(98, 47);
-            this.addMovieButton.TabIndex = 45;
+            this.addMovieButton.TabIndex = 11;
             this.addMovieButton.Text = "Adauga Film";
             this.addMovieButton.UseVisualStyleBackColor = true;
             // 
