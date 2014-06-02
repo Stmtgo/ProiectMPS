@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.moviesListView = new System.Windows.Forms.ListView();
             this.movieNumber = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.nameColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -44,6 +45,9 @@
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.ratingLabel = new System.Windows.Forms.Label();
             this.textBox6 = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.textBox5 = new System.Windows.Forms.TextBox();
@@ -59,22 +63,29 @@
             this.addMovieButton = new System.Windows.Forms.Button();
             this.deleteMovieButton = new System.Windows.Forms.Button();
             this.editMovieButton = new System.Windows.Forms.Button();
+            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.videoLinkLabel = new System.Windows.Forms.Label();
+            this.CDDVDLabel = new System.Windows.Forms.Label();
+            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.textBox10 = new System.Windows.Forms.TextBox();
+            this.durataFilmLabel = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // moviesListView
             // 
-            this.moviesListView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.moviesListView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
             this.moviesListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.movieNumber,
             this.nameColumn});
             this.moviesListView.GridLines = true;
             this.moviesListView.Location = new System.Drawing.Point(12, 91);
             this.moviesListView.Name = "moviesListView";
-            this.moviesListView.Size = new System.Drawing.Size(158, 326);
+            this.moviesListView.Size = new System.Drawing.Size(158, 413);
             this.moviesListView.TabIndex = 0;
             this.moviesListView.UseCompatibleStateImageBehavior = false;
             this.moviesListView.View = System.Windows.Forms.View.Details;
@@ -132,7 +143,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.menuStrip1.Size = new System.Drawing.Size(747, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(756, 24);
             this.menuStrip1.TabIndex = 5;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -178,13 +189,13 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.Controls.Add(this.panel1);
             this.groupBox1.Location = new System.Drawing.Point(176, 91);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(559, 326);
+            this.groupBox1.Size = new System.Drawing.Size(568, 413);
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Informatii film";
@@ -194,6 +205,15 @@
             this.panel1.AutoScroll = true;
             this.panel1.AutoSize = true;
             this.panel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.panel1.Controls.Add(this.textBox10);
+            this.panel1.Controls.Add(this.durataFilmLabel);
+            this.panel1.Controls.Add(this.textBox9);
+            this.panel1.Controls.Add(this.CDDVDLabel);
+            this.panel1.Controls.Add(this.textBox8);
+            this.panel1.Controls.Add(this.videoLinkLabel);
+            this.panel1.Controls.Add(this.pictureBox1);
+            this.panel1.Controls.Add(this.textBox7);
+            this.panel1.Controls.Add(this.ratingLabel);
             this.panel1.Controls.Add(this.textBox6);
             this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.textBox5);
@@ -209,12 +229,41 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(3, 16);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(553, 307);
+            this.panel1.Size = new System.Drawing.Size(562, 394);
             this.panel1.TabIndex = 0;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(184, 3);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(365, 240);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBox1.TabIndex = 14;
+            this.pictureBox1.TabStop = false;
+            // 
+            // textBox7
+            // 
+            this.textBox7.Location = new System.Drawing.Point(69, 223);
+            this.textBox7.Name = "textBox7";
+            this.textBox7.Size = new System.Drawing.Size(35, 20);
+            this.textBox7.TabIndex = 13;
+            // 
+            // ratingLabel
+            // 
+            this.ratingLabel.AutoSize = true;
+            this.ratingLabel.Location = new System.Drawing.Point(66, 207);
+            this.ratingLabel.Name = "ratingLabel";
+            this.ratingLabel.Size = new System.Drawing.Size(38, 13);
+            this.ratingLabel.TabIndex = 12;
+            this.ratingLabel.Text = "Rating";
             // 
             // textBox6
             // 
-            this.textBox6.Location = new System.Drawing.Point(6, 158);
+            this.textBox6.Location = new System.Drawing.Point(6, 223);
             this.textBox6.Name = "textBox6";
             this.textBox6.Size = new System.Drawing.Size(54, 20);
             this.textBox6.TabIndex = 11;
@@ -222,7 +271,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(3, 141);
+            this.label7.Location = new System.Drawing.Point(3, 207);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(57, 13);
             this.label7.TabIndex = 10;
@@ -230,18 +279,20 @@
             // 
             // textBox5
             // 
-            this.textBox5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox5.Location = new System.Drawing.Point(184, 30);
+            this.textBox5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox5.Location = new System.Drawing.Point(184, 319);
             this.textBox5.Multiline = true;
             this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(366, 61);
+            this.textBox5.Size = new System.Drawing.Size(375, 61);
             this.textBox5.TabIndex = 9;
             // 
             // label6
             // 
+            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(181, 13);
+            this.label6.Location = new System.Drawing.Point(181, 303);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(52, 13);
             this.label6.TabIndex = 8;
@@ -249,18 +300,18 @@
             // 
             // textBox4
             // 
-            this.textBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox4.Location = new System.Drawing.Point(184, 117);
+            this.textBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
+            this.textBox4.Location = new System.Drawing.Point(6, 271);
             this.textBox4.Multiline = true;
             this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(366, 37);
+            this.textBox4.Size = new System.Drawing.Size(161, 109);
             this.textBox4.TabIndex = 7;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(181, 100);
+            this.label5.Location = new System.Drawing.Point(3, 255);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(34, 13);
             this.label5.TabIndex = 6;
@@ -268,7 +319,7 @@
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(6, 117);
+            this.textBox3.Location = new System.Drawing.Point(6, 127);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(161, 20);
             this.textBox3.TabIndex = 5;
@@ -276,7 +327,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(3, 100);
+            this.label4.Location = new System.Drawing.Point(3, 111);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(43, 13);
             this.label4.TabIndex = 4;
@@ -284,7 +335,7 @@
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(6, 71);
+            this.textBox2.Location = new System.Drawing.Point(6, 79);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(161, 20);
             this.textBox2.TabIndex = 3;
@@ -293,7 +344,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(3, 54);
+            this.label3.Location = new System.Drawing.Point(3, 63);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(27, 13);
             this.label3.TabIndex = 2;
@@ -319,7 +370,7 @@
             // addMovieButton
             // 
             this.addMovieButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.addMovieButton.Location = new System.Drawing.Point(12, 423);
+            this.addMovieButton.Location = new System.Drawing.Point(12, 510);
             this.addMovieButton.Name = "addMovieButton";
             this.addMovieButton.Size = new System.Drawing.Size(75, 23);
             this.addMovieButton.TabIndex = 7;
@@ -329,7 +380,7 @@
             // deleteMovieButton
             // 
             this.deleteMovieButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.deleteMovieButton.Location = new System.Drawing.Point(93, 423);
+            this.deleteMovieButton.Location = new System.Drawing.Point(93, 510);
             this.deleteMovieButton.Name = "deleteMovieButton";
             this.deleteMovieButton.Size = new System.Drawing.Size(75, 23);
             this.deleteMovieButton.TabIndex = 8;
@@ -339,18 +390,70 @@
             // editMovieButton
             // 
             this.editMovieButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.editMovieButton.Location = new System.Drawing.Point(179, 423);
+            this.editMovieButton.Location = new System.Drawing.Point(179, 510);
             this.editMovieButton.Name = "editMovieButton";
             this.editMovieButton.Size = new System.Drawing.Size(99, 23);
             this.editMovieButton.TabIndex = 9;
             this.editMovieButton.Text = "Editeaza film";
             this.editMovieButton.UseVisualStyleBackColor = true;
             // 
+            // textBox8
+            // 
+            this.textBox8.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox8.Location = new System.Drawing.Point(184, 271);
+            this.textBox8.Name = "textBox8";
+            this.textBox8.Size = new System.Drawing.Size(375, 20);
+            this.textBox8.TabIndex = 16;
+            // 
+            // videoLinkLabel
+            // 
+            this.videoLinkLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.videoLinkLabel.AutoSize = true;
+            this.videoLinkLabel.Location = new System.Drawing.Point(181, 255);
+            this.videoLinkLabel.Name = "videoLinkLabel";
+            this.videoLinkLabel.Size = new System.Drawing.Size(61, 13);
+            this.videoLinkLabel.TabIndex = 15;
+            this.videoLinkLabel.Text = "Trailer URL";
+            // 
+            // CDDVDLabel
+            // 
+            this.CDDVDLabel.AutoSize = true;
+            this.CDDVDLabel.Location = new System.Drawing.Point(3, 159);
+            this.CDDVDLabel.Name = "CDDVDLabel";
+            this.CDDVDLabel.Size = new System.Drawing.Size(50, 13);
+            this.CDDVDLabel.TabIndex = 17;
+            this.CDDVDLabel.Text = "CD/DVD";
+            // 
+            // textBox9
+            // 
+            this.textBox9.Location = new System.Drawing.Point(6, 175);
+            this.textBox9.Name = "textBox9";
+            this.textBox9.Size = new System.Drawing.Size(161, 20);
+            this.textBox9.TabIndex = 18;
+            // 
+            // textBox10
+            // 
+            this.textBox10.Location = new System.Drawing.Point(113, 223);
+            this.textBox10.Name = "textBox10";
+            this.textBox10.Size = new System.Drawing.Size(54, 20);
+            this.textBox10.TabIndex = 20;
+            // 
+            // durataFilmLabel
+            // 
+            this.durataFilmLabel.AutoSize = true;
+            this.durataFilmLabel.Location = new System.Drawing.Point(110, 207);
+            this.durataFilmLabel.Name = "durataFilmLabel";
+            this.durataFilmLabel.Size = new System.Drawing.Size(39, 13);
+            this.durataFilmLabel.TabIndex = 19;
+            this.durataFilmLabel.Text = "Durata";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(747, 477);
+            this.ClientSize = new System.Drawing.Size(756, 564);
             this.Controls.Add(this.editMovieButton);
             this.Controls.Add(this.deleteMovieButton);
             this.Controls.Add(this.addMovieButton);
@@ -371,6 +474,7 @@
             this.groupBox1.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -409,6 +513,15 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox textBox6;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.Label ratingLabel;
+        private System.Windows.Forms.TextBox textBox8;
+        private System.Windows.Forms.Label videoLinkLabel;
+        private System.Windows.Forms.TextBox textBox10;
+        private System.Windows.Forms.Label durataFilmLabel;
+        private System.Windows.Forms.TextBox textBox9;
+        private System.Windows.Forms.Label CDDVDLabel;
 
 
     }
