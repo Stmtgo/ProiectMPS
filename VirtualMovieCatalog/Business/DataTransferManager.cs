@@ -19,6 +19,12 @@ namespace VirtualMovieCatalog.Business
 
         //Public Methods===========================================================================
 
+        public List<Movie> getAllMovies()
+        {
+            List<int> movieIds = getMovieIds("", "");
+            return getMoviesByIds(movieIds);
+        }
+
         // filter can take the following values:
         // name, year, nrdiscs, genre, actor, director, disc, ""
         public List<Movie> getMovies( String filter, String value)
