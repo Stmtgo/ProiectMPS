@@ -27,6 +27,7 @@ namespace VirtualMovieCatalog
         //Public Methods===========================================================================
         public void UpdateListOfMovies(List<Movie> listOfMovies)
         {
+            ClearMovieListBox();
             ClearAllInfoShowingTextboxes();
             var contor = 1;
 
@@ -117,6 +118,10 @@ namespace VirtualMovieCatalog
             addMovieForm.ShowDialog();
         }
 
+        private void ClearMovieListBox()
+        {
+            moviesListView.Items.Clear();
+        }
         
     }
 }
