@@ -70,15 +70,59 @@ namespace VirtualMovieCatalog.Business
 
         public void DeleteMovie(Movie movie)
         {
+            var id = getMovieId(movie);
 
+            if (id != 0)
+            {
+                RemoveMovie(id);
+            }
         }
 
         public void EditMovie(Movie movie)
         {
- 
+            var id = getMovieId(movie);
         }
 
         //Private Methods==========================================================================
+
+        private int getMovieId( Movie movie) 
+        {
+            int movieID = 0;
+
+            String selectComand = "SELECT id FROM movies WHERE name = @name AND year = @year;";
+
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                con.Open();
+                using (SqlCommand select = new SqlCommand(selectComand, con))
+                {
+                    select.Parameters.Add("@name", System.Data.SqlDbType.NVarChar);
+                    select.Parameters["@name"].Value = movie.Name;
+                    select.Parameters.Add("@year", System.Data.SqlDbType.Int);
+                    select.Parameters["@year"].Value = movie.Year;
+
+                    movieID = Convert.ToInt32(select.ExecuteScalar());
+                }
+            }
+
+            return movieID;
+        }
+
+        private void RemoveMovie(int id) 
+        {
+            // No prepare for SQL INJECTION necessary here (data is sanitized)
+            String removeComand = "DELETE FROM movies WHERE id = " + id;
+
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                con.Open();
+                using (SqlCommand remove = new SqlCommand(removeComand, con))
+                {
+                    remove.ExecuteNonQuery();
+                }
+            }
+        }
+
         private List<int> getMovieIds(String filter, String value)
         {
             List<int> movieIds = null;

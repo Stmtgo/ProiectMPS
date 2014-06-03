@@ -19,7 +19,6 @@ namespace VirtualMovieCatalog
             a +=", ";
             a = a.Remove(a.Length - 2);
 
-
             Application.EnableVisualStyles();
             
             Form1 mainForm = new Form1();
