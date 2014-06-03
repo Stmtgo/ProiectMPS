@@ -124,6 +124,11 @@ namespace VirtualMovieCatalog
         {
             moviesListView.Items.Clear();
         }
+
+        private void deleteMovieButton_Click(object sender, EventArgs e)
+        {
+            mainController.DeleteMovie();
+        }
         
     }
 }

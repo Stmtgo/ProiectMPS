@@ -68,7 +68,15 @@ namespace VirtualMovieCatalog.Business
             return status;
         }
 
+        public void DeleteMovie(Movie movie)
+        {
 
+        }
+
+        public void EditMovie(Movie movie)
+        {
+ 
+        }
 
         //Private Methods==========================================================================
         private List<int> getMovieIds(String filter, String value)
@@ -351,5 +359,7 @@ namespace VirtualMovieCatalog.Business
             }
         }
 
+
+        
     }
 }

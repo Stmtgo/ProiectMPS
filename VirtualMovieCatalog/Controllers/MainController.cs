@@ -42,6 +42,15 @@ namespace VirtualMovieCatalog.Controllers
             InitializeData();
             InitializeForm();
         }
+
+        public void DeleteMovie()
+        {
+            movieCatalogController.DeleteMovie();
+            InitializeData();
+            InitializeForm();
+        }
+
+
         //Private Methods==========================================================================
         private void InitializeData()
         {
@@ -52,6 +61,8 @@ namespace VirtualMovieCatalog.Controllers
         {   
             mainForm.UpdateListOfMovies(movieCatalogController.GetListOfMovies());
         }
+
+
 
 
 

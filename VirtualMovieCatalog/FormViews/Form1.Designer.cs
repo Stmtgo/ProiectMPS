@@ -44,6 +44,8 @@
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.movieSubtitleTextBox = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.movieDurationTextBox = new System.Windows.Forms.TextBox();
             this.durataFilmLabel = new System.Windows.Forms.Label();
             this.movieCdDvdTextBox = new System.Windows.Forms.TextBox();
@@ -68,8 +70,6 @@
             this.addMovieButton = new System.Windows.Forms.Button();
             this.deleteMovieButton = new System.Windows.Forms.Button();
             this.editMovieButton = new System.Windows.Forms.Button();
-            this.label8 = new System.Windows.Forms.Label();
-            this.movieSubtitleTextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
@@ -229,6 +229,22 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(603, 395);
             this.panel1.TabIndex = 0;
+            // 
+            // movieSubtitleTextBox
+            // 
+            this.movieSubtitleTextBox.Location = new System.Drawing.Point(6, 271);
+            this.movieSubtitleTextBox.Name = "movieSubtitleTextBox";
+            this.movieSubtitleTextBox.Size = new System.Drawing.Size(161, 20);
+            this.movieSubtitleTextBox.TabIndex = 22;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(3, 255);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(48, 13);
+            this.label8.TabIndex = 21;
+            this.label8.Text = "Subtitrari";
             // 
             // movieDurationTextBox
             // 
@@ -435,6 +451,7 @@
             this.deleteMovieButton.TabIndex = 8;
             this.deleteMovieButton.Text = "Sterge film";
             this.deleteMovieButton.UseVisualStyleBackColor = true;
+            this.deleteMovieButton.Click += new System.EventHandler(this.deleteMovieButton_Click);
             // 
             // editMovieButton
             // 
@@ -445,22 +462,6 @@
             this.editMovieButton.TabIndex = 9;
             this.editMovieButton.Text = "Editeaza film";
             this.editMovieButton.UseVisualStyleBackColor = true;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(3, 255);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(48, 13);
-            this.label8.TabIndex = 21;
-            this.label8.Text = "Subtitrari";
-            // 
-            // movieSubtitleTextBox
-            // 
-            this.movieSubtitleTextBox.Location = new System.Drawing.Point(6, 271);
-            this.movieSubtitleTextBox.Name = "movieSubtitleTextBox";
-            this.movieSubtitleTextBox.Size = new System.Drawing.Size(161, 20);
-            this.movieSubtitleTextBox.TabIndex = 22;
             // 
             // label1
             // 

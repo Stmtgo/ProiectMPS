@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using VirtualMovieCatalog.Business;
+using System.Windows.Forms;
 
 namespace VirtualMovieCatalog.Controllers
 {
@@ -57,11 +58,26 @@ namespace VirtualMovieCatalog.Controllers
             Movie auxMovie = new Movie(name, genreList, directorsList, actorsList, subtitlesList, movieCdDvdTextBoxList, description, Convert.ToInt32(releaseYear), duration);
             dataTransferManager.insertMovie(auxMovie);
         }
+
+        public void DeleteMovie()
+        {
+            if (movieCatalog.CurrentlySelectedMovie != null)
+            {
+                DialogResult dialogResult = MessageBox.Show("Do you really want to delete the movie " + movieCatalog.CurrentlySelectedMovie.Name, "Delete movie", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    //dataTransferManager.DeleteMovie(movieCatalog.CurrentlySelectedMovie);
+                }
+            }
+        }
+
         //Private Methods==========================================================================
         private void SetMovieList()
         {
            // movieCatalog.SetMoviesList(dataTransferManager.GetMovies());
         }
+
+
 
 
 
