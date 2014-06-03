@@ -17,7 +17,7 @@ namespace VirtualMovieCatalog
         {
             string a = "asdasdas";
             a +=", ";
-            a = a.Remove(a.Length - 2)
+            a = a.Remove(a.Length - 2);
 
             Application.EnableVisualStyles();
             
