@@ -95,9 +95,11 @@ namespace VirtualMovieCatalog
             movieReleaseYearTextBox.Text = "";
             movieRatingTextBox.Text = "";
             movieDurationTextBox.Text = "";
+            movieSubtitleTextBox.Text = "";
             movieCdDvdTextBox.Text = "";
             movieActorsTextBox.Text = "";
             movieDescriptionTextBox.Text = "";
+            movieTrailerUrlTextBox.Text = "";
         }
 
         //Private Methods==========================================================================
