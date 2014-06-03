@@ -50,12 +50,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Business\CinemagiaDataImporter.cs" />
     <Compile Include="Business\DatabaseConfig.cs" />
     <Compile Include="Business\DataTransferManager.cs" />
+    <Compile Include="Business\ImdbDataImporter.cs" />
     <Compile Include="Business\IMovieListExporter.cs" />
     <Compile Include="Business\Movie.cs" />
     <Compile Include="Business\MovieCatalog.cs" />
-    <Compile Include="Business\MovieDataImporter.cs" />
+    <Compile Include="Business\IMovieDataImporter.cs" />
     <Compile Include="Business\MovieFilter.cs" />
     <Compile Include="Business\MovieListCSVExporter.cs" />
     <Compile Include="Business\MovieListHTMLExporter.cs" />
@@ -92,6 +94,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <None Include="App.config" />
+    <None Include="ClassDiagram1.cd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

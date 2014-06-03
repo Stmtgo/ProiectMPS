@@ -7,5 +7,6 @@ namespace VirtualMovieCatalog.Business
 {
     interface IMovieListExporter
     {
+        void ExportListOfMovies(List<Movie> listOfMovies);
     }
 }

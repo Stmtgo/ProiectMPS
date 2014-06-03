@@ -11,7 +11,7 @@ namespace VirtualMovieCatalog.Business
         private List<Movie> listOfMovies;
         private MovieFilter movieFilter;
         private IMovieListExporter movieListExporter;
-        private MovieDataImporter movieDataImporter;
+        private IMovieDataImporter movieDataImporter;
         private Movie currentlySelectedMovie;
 
         //Constructor(s)===========================================================================
