@@ -15,22 +15,22 @@ namespace VirtualMovieCatalog.Business
 
         //Constructor(s)===========================================================================
         public DataTransferManager()
-        {}
+        { }
 
         //Public Methods===========================================================================
 
         public List<Movie> getAllMovies()
         {
-            List<int> movieIds = getMovieIds("", "");
-            return getMoviesByIds(movieIds);
+            List<int> movieIds = GetMovieIds("", "");
+            return GetMoviesByIds(movieIds);
         }
 
         // filter can take the following values:
         // name, year, nrdiscs, genre, actor, director, disc, ""
-        public List<Movie> getMovies( String filter, String value)
+        public List<Movie> getMovies(String filter, String value)
         {
-            List<int> movieIds = getMovieIds(filter, value);
-            return getMoviesByIds( movieIds);
+            List<int> movieIds = GetMovieIds(filter, value);
+            return GetMoviesByIds(movieIds);
         }
 
         public bool insertMovie(Movie movie)
@@ -41,19 +41,19 @@ namespace VirtualMovieCatalog.Business
             {
                 try
                 {
-                    int insertedId = addMovie(movie.Name, movie.Description, movie.Year, movie.Duration);
+                    int insertedId = AddMovie(movie.Name, movie.Description, movie.Year, movie.Duration);
 
-                    List<int> directorIds = add("directors", movie.Directors);
-                    List<int> genreIds = add("genres", movie.Genres);
-                    List<int> subtitleIds = add("subtitles", movie.Subtitles);
-                    List<int> actorIds = add("actors", movie.Actors);
-                    List<int> discIds = add("discs", movie.Discs);
+                    List<int> directorIds = Add("directors", movie.Directors);
+                    List<int> genreIds = Add("genres", movie.Genres);
+                    List<int> subtitleIds = Add("subtitles", movie.Subtitles);
+                    List<int> actorIds = Add("actors", movie.Actors);
+                    List<int> discIds = Add("discs", movie.Discs);
 
-                    linkMovieAnd("director", insertedId, directorIds);
-                    linkMovieAnd("genre", insertedId, genreIds);
-                    linkMovieAnd("subtitle", insertedId, subtitleIds);
-                    linkMovieAnd("actor", insertedId, actorIds);
-                    linkMovieAnd("disc", insertedId, discIds);
+                    LinkMovieAnd("director", insertedId, directorIds);
+                    LinkMovieAnd("genre", insertedId, genreIds);
+                    LinkMovieAnd("subtitle", insertedId, subtitleIds);
+                    LinkMovieAnd("actor", insertedId, actorIds);
+                    LinkMovieAnd("disc", insertedId, discIds);
 
                     // commits the changes to the database
                     transaction.Complete();
@@ -81,11 +81,16 @@ namespace VirtualMovieCatalog.Business
         public void EditMovie(Movie movie)
         {
             var id = getMovieId(movie);
+
+            if (id != 0)
+            {
+                UpdateMovie(id, movie);
+            }
         }
 
         //Private Methods==========================================================================
 
-        private int getMovieId( Movie movie) 
+        private int getMovieId(Movie movie)
         {
             int movieID = 0;
 
@@ -108,7 +113,7 @@ namespace VirtualMovieCatalog.Business
             return movieID;
         }
 
-        private void RemoveMovie(int id) 
+        private void RemoveMovie(int id)
         {
             // No prepare for SQL INJECTION necessary here (data is sanitized)
             String removeComand = "DELETE FROM movies WHERE id = " + id;
@@ -123,27 +128,164 @@ namespace VirtualMovieCatalog.Business
             }
         }
 
-        private List<int> getMovieIds(String filter, String value)
+        private bool UpdateMovie(int id, Movie movie)
+        {
+
+            var status = true;
+
+            using (var transaction = new System.Transactions.TransactionScope())
+            {
+                try
+                {
+                    // get old info
+                    var oldDirectors = Get("director", id);
+                    var oldGenres = Get("genre", id);
+                    var oldSubtitles = Get("subtitle", id);
+                    var oldActors = Get("actor", id);
+                    var oldDiscs = Get("disc", id);
+
+                    // add new info
+                    UpdateBasicComponents(id, movie.Name, movie.Description, movie.Year, movie.Duration);
+
+                    List<int> directorIds = Add("directors", movie.Directors);
+                    List<int> genreIds = Add("genres", movie.Genres);
+                    List<int> subtitleIds = Add("subtitles", movie.Subtitles);
+                    List<int> actorIds = Add("actors", movie.Actors);
+                    List<int> discIds = Add("discs", movie.Discs);
+
+                    LinkMovieAnd("director", id, directorIds);
+                    LinkMovieAnd("genre", id, genreIds);
+                    LinkMovieAnd("subtitle", id, subtitleIds);
+                    LinkMovieAnd("actor", id, actorIds);
+                    LinkMovieAnd("disc", id, discIds);
+
+                    // remove extra info
+                    var extraDirectors = oldDirectors.Except(movie.Directors, StringComparer.OrdinalIgnoreCase).ToList();
+                    var extraGenres = oldGenres.Except(movie.Genres, StringComparer.OrdinalIgnoreCase).ToList();
+                    var extraSubtitles = oldSubtitles.Except(movie.Subtitles, StringComparer.OrdinalIgnoreCase).ToList();
+                    var extraActors = oldActors.Except(movie.Actors, StringComparer.OrdinalIgnoreCase).ToList();
+                    var extraDiscs = oldDiscs.Except(movie.Discs, StringComparer.OrdinalIgnoreCase).ToList();
+
+                    DeleteExtra("director", extraDirectors, id);
+                    DeleteExtra("genre", extraGenres, id);
+                    DeleteExtra("subtitle", extraSubtitles, id);
+                    DeleteExtra("actor", extraActors, id);
+                    DeleteExtra("disc", extraDiscs, id);
+
+                    // commits the changes to the database
+                    transaction.Complete();
+
+                }
+                catch (Exception e)
+                {
+                    status = false;
+                }
+            }
+
+            return status;
+        }
+
+        private void UpdateBasicComponents(int id, string name, string description, int year, int duration)
+        {
+            String updateComand = "UPDATE movies SET name = @name, description = @description, year = @year, nrDiscs = @duration WHERE id = @id";
+
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                con.Open();
+                using (SqlCommand update = new SqlCommand(updateComand, con))
+                {
+                    update.Parameters.Add("@name", System.Data.SqlDbType.NVarChar);
+                    update.Parameters["@name"].Value = name;
+                    update.Parameters.Add("@description", System.Data.SqlDbType.NVarChar);
+                    update.Parameters["@description"].Value = description;
+                    update.Parameters.Add("@year", System.Data.SqlDbType.Int);
+                    update.Parameters["@year"].Value = year;
+                    update.Parameters.Add("@duration", System.Data.SqlDbType.NVarChar);
+                    update.Parameters["@duration"].Value = duration;
+                    update.Parameters.Add("@id", System.Data.SqlDbType.Int);
+                    update.Parameters["@id"].Value = id;
+
+                    update.ExecuteNonQuery();
+                }
+            }
+        }
+
+        private List<string> Get(string table, int id)
+        {
+            String selectComand = "SELECT name from " + table + "s T" +
+                                  " INNER JOIN movies_" + table + "s MT ON" +
+                                  " MT.movieid = " + id +
+                                  " AND MT." + table + "id = T.id;";
+
+            List<String> names = new List<String>();
+
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                con.Open();
+
+                using (SqlCommand select = new SqlCommand(selectComand, con))
+                {
+                    var results = select.ExecuteReader();
+                    while (results.Read())
+                    {
+                        names.Add(results["name"].ToString());
+                    }
+                }
+            }
+
+            return names;
+        }
+
+        private void DeleteExtra(string table, List<string> extraNames, int id)
+        {
+            string deleteComand = "DELETE MT FROM movies_" + table + "s MT" +
+                                  " INNER JOIN " + table + "s T" +
+                                  " ON MT.movieid = " + id +
+                                  " AND MT." + table + "id = T.id" +
+                                  " AND T.name = @extraName";
+
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                con.Open();
+                using (SqlCommand delete = new SqlCommand(deleteComand, con))
+                {
+                    delete.Parameters.Add("@extraName", System.Data.SqlDbType.NVarChar);
+
+                    foreach (var extraName in extraNames)
+                    {
+                        delete.Parameters["@extraName"].Value = extraName;
+                        delete.ExecuteNonQuery();
+                    }
+                }
+            }
+        }
+
+        private List<int> GetMovieIds(String filter, String value)
         {
             List<int> movieIds = null;
 
-            switch (filter) 
+            switch (filter)
             {
-                case "name": case "year": case "nrdiscs":
-                    movieIds = simpleQuery(filter, value);
+                case "name":
+                case "year":
+                case "nrDiscs":
+                    movieIds = SimpleQuery(filter, value);
                     break;
-                case "genre": case "actor": case "director": case "disc":
-                    movieIds = complexQuery(filter, value);
+                case "genre":
+                case "actor":
+                case "director":
+                case "disc":
+                    movieIds = ComplexQuery(filter, value);
                     break;
                 default:
-                    movieIds = allQuery();
+                    movieIds = AllQuery();
                     break;
             }
 
             return movieIds;
         }
 
-        private List<int> allQuery()
+        private List<int> AllQuery()
         {
             String selectComand = "SELECT id FROM movies;";
 
@@ -169,7 +311,7 @@ namespace VirtualMovieCatalog.Business
         /**
          * Selects movie ids
          */
-        private List<int> simpleQuery(String property, String value)
+        private List<int> SimpleQuery(String property, String value)
         {
             String selectComand = "SELECT id FROM movies WHERE " + property + " = @value;";
 
@@ -198,11 +340,11 @@ namespace VirtualMovieCatalog.Business
         /**
          * Selects movie ids by joining multiple tables
          */
-        private List<int> complexQuery( String property, String value)
+        private List<int> ComplexQuery(String property, String value)
         {
-            String selectComand = "SELECT M.movieid id " + 
-                            "FROM movies_" + property + "s AS M " + 
-                            "INNER JOIN " + property + "s AS D ON " + 
+            String selectComand = "SELECT M.movieid id " +
+                            "FROM movies_" + property + "s AS M " +
+                            "INNER JOIN " + property + "s AS D ON " +
                             "D.id = M." + property + "id AND D.name = @value;";
 
             List<int> movieIds = new List<int>();
@@ -227,28 +369,28 @@ namespace VirtualMovieCatalog.Business
             return movieIds;
         }
 
-        private List<Movie> getMoviesByIds(List<int> movieIds)
+        private List<Movie> GetMoviesByIds(List<int> movieIds)
         {
             List<Movie> movies = new List<Movie>();
 
             foreach (int id in movieIds)
             {
-                Dictionary<String, String> movieComponents = getMovieBasicComponents(id);
-                
-                List<string> directors = getById("director", id);
-                List<string> actors = getById("actor", id);
-                List<string> genres = getById("genre", id);
-                List<string> subtitles = getById("subtitle", id);
-                List<string> discs = getById("disc", id);
+                Dictionary<String, String> movieComponents = GetMovieBasicComponents(id);
 
-                Movie movie = new Movie(movieComponents["name"], genres, directors, actors, subtitles, discs, movieComponents["description"], Convert.ToInt32(movieComponents["year"]), movieComponents["nrDiscs"]);
+                List<string> directors = GetById("director", id);
+                List<string> actors = GetById("actor", id);
+                List<string> genres = GetById("genre", id);
+                List<string> subtitles = GetById("subtitle", id);
+                List<string> discs = GetById("disc", id);
+
+                Movie movie = new Movie(movieComponents["name"], genres, directors, actors, subtitles, discs, movieComponents["description"], Convert.ToInt32(movieComponents["year"]), Convert.ToInt32(movieComponents["nrDiscs"]));
                 movies.Add(movie);
             }
 
             return movies;
         }
 
-        private Dictionary<String, String> getMovieBasicComponents(int id)
+        private Dictionary<String, String> GetMovieBasicComponents(int id)
         {
             var basicComponents = new Dictionary<String, String>();
 
@@ -276,16 +418,17 @@ namespace VirtualMovieCatalog.Business
             return basicComponents;
         }
 
-        private List<String> getById(String table, int id)
+        private List<String> GetById(String table, int id)
         {
             // no need to prepare for SQL INJECTION here (data is sanitized)
             String selectComand = "SELECT D.name name FROM " + table + "s D " +
-                                  "INNER JOIN movies_" + table + "s M ON " + 
+                                  "INNER JOIN movies_" + table + "s M ON " +
                                   "D.id = M." + table + "id AND M.movieid = " + id;
-            
+
             List<String> result = new List<String>();
 
-            using (SqlConnection con = new SqlConnection(connectionString)) {
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
                 con.Open();
 
                 using (SqlCommand select = new SqlCommand(selectComand, con))
@@ -305,7 +448,7 @@ namespace VirtualMovieCatalog.Business
         /**
          * Inserts a movie into the database and returns the resulting id
          */
-        private int addMovie( String name, String description, int year, string nrDiscs)
+        private int AddMovie(String name, String description, int year, int duration)
         {
 
             int id;
@@ -314,18 +457,18 @@ namespace VirtualMovieCatalog.Business
                                    "VALUES ( @name, @description, @year, @nrDiscs); " +
                                    "SELECT SCOPE_IDENTITY();";
 
-            using (SqlConnection con = new SqlConnection( connectionString))
+            using (SqlConnection con = new SqlConnection(connectionString))
             {
                 con.Open();
 
-                using (SqlCommand insert = new SqlCommand( insertCommand, con))
+                using (SqlCommand insert = new SqlCommand(insertCommand, con))
                 {
-                    insert.Parameters.AddWithValue( "@name", name);
-                    insert.Parameters.AddWithValue( "@description", description);
-                    insert.Parameters.AddWithValue( "@year", year);
-                    insert.Parameters.AddWithValue( "@nrDiscs", nrDiscs);
+                    insert.Parameters.AddWithValue("@name", name);
+                    insert.Parameters.AddWithValue("@description", description);
+                    insert.Parameters.AddWithValue("@year", year);
+                    insert.Parameters.AddWithValue("@nrDiscs", duration);
 
-                    id = Convert.ToInt32( insert.ExecuteScalar());
+                    id = Convert.ToInt32(insert.ExecuteScalar());
                 }
             }
 
@@ -335,37 +478,37 @@ namespace VirtualMovieCatalog.Business
         /**
          * Adds all the @entities to the @table and returns the resulting ids
          */
-        private List<int> add( String table, List<String> entities) 
+        private List<int> Add(String table, List<String> entities)
         {
 
-            String insertCommand = "IF NOT EXISTS(SELECT TOP 1 1 FROM " + table + " WHERE name = @name) " + 
-                "BEGIN " + 
-                    "INSERT INTO " + table + " (name) " + 
-                    "VALUES (@name); " + 
-                    "SET @id = SCOPE_IDENTITY(); " + 
-                "END " + 
-                "ELSE " + 
+            String insertCommand = "IF NOT EXISTS(SELECT TOP 1 1 FROM " + table + " WHERE name = @name) " +
                 "BEGIN " +
-                    "SELECT @id = ID FROM " + table + " WHERE name = @name; " + 
+                    "INSERT INTO " + table + " (name) " +
+                    "VALUES (@name); " +
+                    "SET @id = SCOPE_IDENTITY(); " +
+                "END " +
+                "ELSE " +
+                "BEGIN " +
+                    "SELECT @id = ID FROM " + table + " WHERE name = @name; " +
                 "END";
 
             List<int> entityIds = new List<int>();
 
-            using (SqlConnection con = new SqlConnection( connectionString))
+            using (SqlConnection con = new SqlConnection(connectionString))
             {
                 con.Open();
 
-                using (SqlCommand insert = new SqlCommand( insertCommand, con))
+                using (SqlCommand insert = new SqlCommand(insertCommand, con))
                 {
                     insert.Parameters.Add("@name", System.Data.SqlDbType.NVarChar);
                     insert.Parameters.Add("@id", System.Data.SqlDbType.Int).Direction = System.Data.ParameterDirection.Output;
-                    
-                    foreach ( String name in entities) 
+
+                    foreach (String name in entities)
                     {
                         insert.Parameters["@name"].Value = name;
 
                         insert.ExecuteNonQuery();
-                        entityIds.Add( (int)insert.Parameters["@id"].Value);
+                        entityIds.Add((int)insert.Parameters["@id"].Value);
                     }
                 }
             }
@@ -373,9 +516,9 @@ namespace VirtualMovieCatalog.Business
             return entityIds;
         }
 
-        private void linkMovieAnd( String table, int movieId, List<int> entityIds)
+        private void LinkMovieAnd(String table, int movieId, List<int> entityIds)
         {
-            String insertCommand = "INSERT INTO movies_" + table + "s( movieId, " + table + "Id) " + 
+            String insertCommand = "INSERT INTO movies_" + table + "s( movieId, " + table + "Id) " +
                 "VALUES( @movieId, @entityId);";
 
             using (SqlConnection con = new SqlConnection(connectionString))
@@ -396,14 +539,13 @@ namespace VirtualMovieCatalog.Business
                         try
                         {
                             insert.ExecuteNonQuery();
-                        } catch (Exception e) 
-                        {}
+                        }
+                        catch (Exception e)
+                        { }
                     }
                 }
             }
         }
 
-
-        
     }
 }

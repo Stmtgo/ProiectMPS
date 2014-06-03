@@ -16,11 +16,11 @@ namespace VirtualMovieCatalog.Business
         List<string> discs;
         string description;
         int year;
-        string duration;
+        int duration;
 
 
         //Constructor(s)===========================================================================
-        public Movie(string name, List<string> genres, List<string> directors, List<string> actors, List<string> subtitles, List<String> discs,string description, int year, string duration)
+        public Movie(string name, List<string> genres, List<string> directors, List<string> actors, List<string> subtitles, List<String> discs,string description, int year, int duration)
         {
             this.Name = name;
             this.Genres = genres;
@@ -82,7 +82,7 @@ namespace VirtualMovieCatalog.Business
             set { year = value; }
         }
 
-        public string Duration
+        public int Duration
         {
             get { return duration; }
             set { duration = value; }

@@ -57,7 +57,7 @@ namespace VirtualMovieCatalog.Controllers
             List<string> subtitlesList = subtitles.Split(',').Select(Trim).ToList();
             List<string> actorsList = actors.Split(',').Select(Trim).ToList();
 
-            Movie auxMovie = new Movie(name, genreList, directorsList, actorsList, subtitlesList, movieCdDvdTextBoxList, description, Convert.ToInt32(releaseYear), duration);
+            Movie auxMovie = new Movie(name, genreList, directorsList, actorsList, subtitlesList, movieCdDvdTextBoxList, description, Convert.ToInt32(releaseYear), Convert.ToInt32(duration));
             dataTransferManager.insertMovie(auxMovie);
         }
 
