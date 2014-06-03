@@ -56,35 +56,35 @@ namespace VirtualMovieCatalog
                 movieRegizorTextbox.Text += item + ", ";
             }
             if (movieRegizorTextbox.Text.Length > 2)
-            movieRegizorTextbox.Text.Remove(movieRegizorTextbox.Text.Length - 2);
+                movieRegizorTextbox.Text = movieRegizorTextbox.Text.Remove(movieRegizorTextbox.Text.Length - 2);
 
             foreach (var item in movie.Actors)
             {
                 movieActorsTextBox.Text += item + ", ";
             }
             if (movieActorsTextBox.Text.Length > 2)
-            movieActorsTextBox.Text.Remove(movieRegizorTextbox.Text.Length - 2);
+                movieActorsTextBox.Text = movieActorsTextBox.Text.Remove(movieActorsTextBox.Text.Length - 2);
 
             foreach (var item in movie.Genres)
             {
                 movieGenreTextBox.Text += item + ", ";
             }
             if (movieGenreTextBox.Text.Length > 2)
-            movieGenreTextBox.Text.Remove(movieRegizorTextbox.Text.Length - 2);
+                movieGenreTextBox.Text = movieGenreTextBox.Text.Remove(movieGenreTextBox.Text.Length - 2);
 
             foreach (var item in movie.Subtitles)
             {
                 movieSubtitleTextBox.Text += item + ", ";
             }
             if (movieSubtitleTextBox.Text.Length > 2)
-            movieSubtitleTextBox.Text.Remove(movieRegizorTextbox.Text.Length - 2);
+                movieSubtitleTextBox.Text = movieSubtitleTextBox.Text.Remove(movieSubtitleTextBox.Text.Length - 2);
 
             foreach (var item in movie.Discs)
             {
                 movieCdDvdTextBox.Text += item + ", ";
             }
             if (movieCdDvdTextBox.Text.Length > 2)
-            movieCdDvdTextBox.Text.Remove(movieRegizorTextbox.Text.Length - 2);
+                movieCdDvdTextBox.Text = movieCdDvdTextBox.Text.Remove(movieCdDvdTextBox.Text.Length - 2);
         }
 
         public void ClearAllInfoShowingTextboxes()

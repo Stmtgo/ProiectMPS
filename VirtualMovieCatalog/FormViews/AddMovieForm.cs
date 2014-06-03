@@ -41,6 +41,7 @@ namespace VirtualMovieCatalog.FormViews
                                     movieActorsTextBox.Text,
                                     movieTrailerUrlTextBox.Text,
                                     movieDescriptionTextBox.Text);
+            Close();
         }
 
 

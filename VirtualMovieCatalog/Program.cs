@@ -15,21 +15,10 @@ namespace VirtualMovieCatalog
         [STAThread]
         static void Main()
         {
-            var dataManager = new DataTransferManager();
+            string a = "asdasdas";
+            a +=", ";
+            a = a.Remove(a.Length - 2);
 
-            //var directors = new List<String>();
-            //directors.Add( "Director2");
-            //directors.Add( "SomeGuy");
-            //directors.Add("SomeNewGuy");
-            //directors.Add("SomeNewer_Guy");
-
-            //var discs = new List<String>();
-            //discs.Add( "Pe birou");
-
-            //var movie = new Movie("NewFilm6", new List<String>(), directors, new List<String>(), new List<String>(), discs, "Some description", 1992, 2);
-
-            //dataManager.getMovies("director", "SomeNewer_Guy");
-            //List<Movie> movies = dataManager.getMovies("", "");
 
             Application.EnableVisualStyles();
             

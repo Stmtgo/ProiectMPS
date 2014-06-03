@@ -45,7 +45,7 @@ namespace VirtualMovieCatalog.Business
 
                     List<int> directorIds = add("directors", movie.Directors);
                     List<int> genreIds = add("genres", movie.Genres);
-                    List<int> subtitleIds = add("subtitlesLang", movie.Subtitles);
+                    List<int> subtitleIds = add("subtitles", movie.Subtitles);
                     List<int> actorIds = add("actors", movie.Actors);
                     List<int> discIds = add("discs", movie.Discs);
 
