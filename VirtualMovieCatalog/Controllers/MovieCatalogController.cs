@@ -49,11 +49,13 @@ namespace VirtualMovieCatalog.Controllers
         public void AddMovie(string name, string genre, string directors, string movieCdDvdTextBox,string releaseYear, string rating,
                              string duration, string subtitles, string actors, string trailerUrl, string description)
         {
-            List<string> genreList = new List<string>(genre.Split(','));
-            List<string> directorsList = new List<string>(directors.Split(','));
-            List<string> movieCdDvdTextBoxList = new List<string>(movieCdDvdTextBox.Split(','));
-            List<string> subtitlesList = new List<string>(subtitles.Split(','));
-            List<string> actorsList = new List<string>(actors.Split(','));
+            Func<String, String> Trim = s => s.Trim();
+
+            List<string> genreList = genre.Split(',').Select(Trim).ToList();
+            List<string> directorsList = directors.Split(',').Select(Trim).ToList();
+            List<string> movieCdDvdTextBoxList = movieCdDvdTextBox.Split(',').Select(Trim).ToList();
+            List<string> subtitlesList = subtitles.Split(',').Select(Trim).ToList();
+            List<string> actorsList = actors.Split(',').Select(Trim).ToList();
 
             Movie auxMovie = new Movie(name, genreList, directorsList, actorsList, subtitlesList, movieCdDvdTextBoxList, description, Convert.ToInt32(releaseYear), duration);
             dataTransferManager.insertMovie(auxMovie);
