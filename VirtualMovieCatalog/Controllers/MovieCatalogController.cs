@@ -68,7 +68,7 @@ namespace VirtualMovieCatalog.Controllers
                 DialogResult dialogResult = MessageBox.Show("Do you really want to delete the movie " + movieCatalog.CurrentlySelectedMovie.Name, "Delete movie", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
                 {
-                    //dataTransferManager.DeleteMovie(movieCatalog.CurrentlySelectedMovie);
+                    dataTransferManager.DeleteMovie(movieCatalog.CurrentlySelectedMovie);
                 }
             }
         }
