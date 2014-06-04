@@ -49,7 +49,7 @@ namespace VirtualMovieCatalog
             movieNameTextBox.Text = movie.Name;
             movieReleaseYearTextBox.Text = movie.Year.ToString();
             movieDescriptionTextBox.Text += movie.Description;
-             
+            movieDurationTextBox.Text += movie.Duration.ToString();
 
             foreach (var item in movie.Directors)
             {
@@ -129,6 +129,22 @@ namespace VirtualMovieCatalog
         {
             mainController.DeleteMovie();
         }
-        
+
+        private void editMovieButton_Click(object sender, EventArgs e)
+        {
+            Func<String, String> Trim = s => s.Trim();
+
+            List<string> genreList = movieGenreTextBox.Text.Split(',').Select(Trim).ToList();
+            List<string> directorsList = movieRegizorTextbox.Text.Split(',').Select(Trim).ToList();
+            List<string> movieCdDvdTextBoxList = movieCdDvdTextBox.Text.Split(',').Select(Trim).ToList();
+            List<string> subtitlesList = movieSubtitleTextBox.Text.Split(',').Select(Trim).ToList();
+            List<string> actorsList = movieActorsTextBox.Text.Split(',').Select(Trim).ToList();
+
+            Movie auxMovie = new Movie(movieNameTextBox.Text, genreList, directorsList, actorsList, subtitlesList, movieCdDvdTextBoxList,
+                                      movieDescriptionTextBox.Text, Convert.ToInt32(movieReleaseYearTextBox.Text), Convert.ToInt32(movieDurationTextBox.Text));
+
+            mainController.EditMovie(auxMovie);
+        }
+
     }
 }

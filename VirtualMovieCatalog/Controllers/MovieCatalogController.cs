@@ -65,7 +65,7 @@ namespace VirtualMovieCatalog.Controllers
         {
             if (movieCatalog.CurrentlySelectedMovie != null)
             {
-                DialogResult dialogResult = MessageBox.Show("Do you really want to delete the movie " + movieCatalog.CurrentlySelectedMovie.Name, "Delete movie", MessageBoxButtons.YesNo);
+                DialogResult dialogResult = MessageBox.Show("Chiar doriti sa stergeti filmul " + movieCatalog.CurrentlySelectedMovie.Name, "Stergere film", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
                 {
                     dataTransferManager.DeleteMovie(movieCatalog.CurrentlySelectedMovie);
@@ -73,6 +73,17 @@ namespace VirtualMovieCatalog.Controllers
             }
         }
 
+        public void EditMovie(Movie movie)
+        {
+            if (movieCatalog.CurrentlySelectedMovie != null)
+            {
+                DialogResult dialogResult = MessageBox.Show("Chiar doriti sa modificati datele filmului " + movieCatalog.CurrentlySelectedMovie.Name, "Editare film", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    dataTransferManager.EditMovie(movie);
+                }
+            }
+        }
         //Private Methods==========================================================================
         private void SetMovieList()
         {
@@ -86,6 +97,8 @@ namespace VirtualMovieCatalog.Controllers
 
 
 
-        
+
+
+       
     }
 }

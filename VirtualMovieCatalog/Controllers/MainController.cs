@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using VirtualMovieCatalog.Business;
 
 namespace VirtualMovieCatalog.Controllers
 {
@@ -50,7 +51,12 @@ namespace VirtualMovieCatalog.Controllers
             InitializeForm();
         }
 
-
+        public void EditMovie(Movie movie)
+        {
+            movieCatalogController.EditMovie(movie);
+            InitializeData();
+            InitializeForm();
+        }
         //Private Methods==========================================================================
         private void InitializeData()
         {
@@ -61,6 +67,8 @@ namespace VirtualMovieCatalog.Controllers
         {   
             mainForm.UpdateListOfMovies(movieCatalogController.GetListOfMovies());
         }
+
+
 
 
 
